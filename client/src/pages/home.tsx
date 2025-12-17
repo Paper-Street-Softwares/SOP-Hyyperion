@@ -1,370 +1,232 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { 
-  Scale, 
-  Briefcase, 
-  Users, 
-  Copyright, 
-  Search, 
-  Zap, 
-  Database, 
-  ShieldCheck, 
-  CreditCard, 
-  TrendingUp,
   ArrowRight,
+  ArrowDownRight,
   Menu,
-  Phone
+  X,
+  Plus
 } from "lucide-react";
-import sequoiaBg from "@assets/generated_images/cinematic_moody_sequoia_forest_background.png";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.8, 
-      ease: [0.22, 1, 0.36, 1] as const // Fixed TS error
-    } 
-  }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3
-    }
-  }
-};
+import { useState, useRef } from "react";
 
 export default function Home() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const [hoveredService, setHoveredService] = useState<number | null>(null);
+
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-primary-foreground">
+    <div ref={containerRef} className="min-h-screen bg-background text-foreground bg-noise overflow-x-hidden selection:bg-primary selection:text-primary-foreground font-sans">
       
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 backdrop-blur-md bg-background/50 border-b border-white/5">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-            <span className="font-serif font-bold text-primary-foreground">H</span>
+      {/* Brutalist Grid Lines Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 flex justify-between px-6 md:px-12 opacity-10">
+        <div className="w-px h-full bg-current"></div>
+        <div className="w-px h-full bg-current hidden md:block"></div>
+        <div className="w-px h-full bg-current hidden md:block"></div>
+        <div className="w-px h-full bg-current"></div>
+      </div>
+
+      {/* Header - Minimal & Technical */}
+      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-6 md:px-12 mix-blend-difference text-white">
+        <div className="flex justify-between items-start">
+          <div>
+            <h1 className="text-xl font-bold tracking-tighter uppercase font-mono">Hyperion<span className="text-primary">.</span></h1>
+            <p className="text-[10px] uppercase tracking-widest opacity-60 mt-1 font-mono">Consultoria Estratégica</p>
           </div>
-          <span className="font-serif text-xl tracking-tight font-medium">Hyperion</span>
-        </div>
-        
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-          <a href="#" className="hover:text-primary transition-colors">Serviços</a>
-          <a href="#" className="hover:text-primary transition-colors">Diferenciais</a>
-          <a href="#" className="hover:text-primary transition-colors">Planos</a>
-          <a href="#" className="hover:text-primary transition-colors">Sobre</a>
-        </div>
-
-        <Button variant="outline" className="hidden md:flex border-primary/20 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
-          <Phone className="w-4 h-4 mr-2" />
-          Fale Conosco
-        </Button>
-
-        <Button variant="ghost" size="icon" className="md:hidden">
-          <Menu className="w-6 h-6" />
-        </Button>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="relative min-h-[110vh] flex items-center justify-center pt-20 overflow-hidden">
-        {/* Background Image with Parallax-like feel (fixed) */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-transparent to-background/90 z-10" />
-          <img 
-            src={sequoiaBg} 
-            alt="Sequoia Forest" 
-            className="w-full h-full object-cover object-center scale-105"
-          />
-        </div>
-
-        <div className="container relative z-20 px-6 md:px-12">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-xs md:text-sm text-primary font-medium tracking-wide uppercase"
-            >
-              <TrendingUp className="w-4 h-4" />
-              <span>Mercado em crescimento de 50% em 2025</span>
-            </motion.div>
-
-            <motion.h1 
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-              className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-white leading-[1.1]"
-            >
-              Cresça como uma <span className="text-primary italic">Sequoia</span>
-            </motion.h1>
-
-            <motion.p 
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light"
-            >
-              Assessoria empresarial multidisciplinar que combina expertise jurídica, gestão estratégica e desenvolvimento humano para construir empresas que prosperam por gerações.
-            </motion.p>
-
-            <motion.div 
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
-            >
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-md px-8 h-14 rounded-full font-medium transition-transform hover:scale-105">
-                Diagnóstico Gratuito
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-              <div className="relative">
-                <input 
-                  type="email" 
-                  placeholder="Seu melhor e-mail" 
-                  className="h-14 px-6 rounded-full bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 w-full sm:w-80 transition-all"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Floating Stats */}
-        <motion.div 
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="absolute bottom-12 left-0 right-0 px-6"
-        >
-          <div className="container max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 bg-black/20 backdrop-blur-xl border border-white/5 rounded-2xl p-8 shadow-2xl">
-              <div className="text-center md:text-left space-y-1">
-                <div className="text-4xl md:text-5xl font-serif text-white font-medium">85%</div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">TJR Projetada</div>
-              </div>
-              <div className="text-center md:text-left space-y-1 md:border-l md:border-white/10 md:pl-8">
-                <div className="text-4xl md:text-5xl font-serif text-primary font-medium">R$ 8.8M</div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">Receita Ano 5</div>
-              </div>
-              <div className="text-center md:text-left space-y-1 md:border-l md:border-white/10 md:pl-8">
-                <div className="text-4xl md:text-5xl font-serif text-white font-medium">37%</div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">Margem Líquida</div>
-              </div>
+          
+          <button className="group flex items-center gap-2 text-sm uppercase tracking-wider font-medium hover:text-primary transition-colors">
+            <span className="hidden md:block">Menu</span>
+            <div className="w-8 h-8 border border-current flex items-center justify-center rounded-full group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all">
+              <Menu className="w-4 h-4" />
             </div>
-          </div>
-        </motion.div>
-      </section>
+          </button>
+        </div>
+      </header>
 
-      {/* Services Section */}
-      <section className="py-24 md:py-32 bg-background relative z-20">
-        <div className="container px-6 md:px-12 mx-auto">
+      {/* Hero Section - Typography Driven */}
+      <section className="relative min-h-screen flex flex-col justify-end pb-24 px-6 md:px-12 pt-32">
+        <div className="max-w-[90vw] z-10">
           <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-6"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative"
           >
-            <div className="space-y-4 max-w-2xl">
-              <Badge variant="outline" className="border-primary/30 text-primary bg-primary/5 px-3 py-1 uppercase tracking-widest text-[10px]">Soluções Integradas</Badge>
-              <h2 className="font-serif text-4xl md:text-5xl text-white leading-tight">
-                Serviços que fazem a <span className="italic text-muted-foreground">diferença</span>
-              </h2>
-              <p className="text-muted-foreground text-lg font-light leading-relaxed">
-                Uma abordagem multidisciplinar única que combina expertise jurídica consolidada com visão estratégica moderna.
+            <h1 className="font-serif text-[15vw] leading-[0.8] tracking-tighter mix-blend-overlay opacity-20 select-none absolute -top-[0.6em] left-0 pointer-events-none">
+              SEQUOIA
+            </h1>
+            <h2 className="text-6xl md:text-8xl lg:text-9xl font-medium tracking-tighter leading-[0.9] mb-12">
+              Cresça com <br />
+              <span className="font-serif italic text-primary">Solidez</span> e <br />
+              <span className="text-outline-thin opacity-80">Propósito.</span>
+            </h2>
+          </motion.div>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 border-t border-white/10 pt-8">
+            <div className="max-w-md">
+              <p className="text-lg md:text-xl font-light text-muted-foreground leading-relaxed">
+                Assessoria empresarial multidisciplinar. Combinamos rigor jurídico com visão estratégica para construir legados.
               </p>
             </div>
             
-            <Button variant="link" className="text-primary p-0 h-auto font-medium hover:text-primary/80">
-              Ver todos os serviços <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
-          </motion.div>
+            <div className="flex items-center gap-4">
+              <div className="h-px w-12 bg-primary"></div>
+              <span className="font-mono text-xs uppercase tracking-widest text-primary">Est. 2024</span>
+            </div>
 
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <ServiceCard 
-              icon={<Scale className="w-6 h-6" />}
-              title="Assessoria Jurídica Completa"
-              description="Contratos, direito do trabalho, consumidor e compliance com LGPD."
-              tags={["Contratos estratégicos", "Compliance LGPD", "Direito trabalhista"]}
-              color="bg-indigo-500/10 text-indigo-400 border-indigo-500/20"
-            />
-            <ServiceCard 
-              icon={<Briefcase className="w-6 h-6" />}
-              title="Consultoria de Gestão Empresarial"
-              description="Desenvolvimento de competências gerenciais e estratégias de crescimento."
-              tags={["Planejamento estratégico", "Gestão de processos", "Análise financeira"]}
-              color="bg-amber-500/10 text-amber-400 border-amber-500/20"
-            />
-            <ServiceCard 
-              icon={<Users className="w-6 h-6" />}
-              title="Consultoria para Escritórios"
-              description="Especializada em gestão e crescimento de escritórios jurídicos."
-              tags={["Gestão jurídica", "Marketing para advogados", "Captação de clientes"]}
-              color="bg-blue-500/10 text-blue-400 border-blue-500/20"
-            />
-            <ServiceCard 
-              icon={<Copyright className="w-6 h-6" />}
-              title="Registro de Marcas e Patentes"
-              description="Proteção completa da propriedade intelectual da sua empresa."
-              tags={["Registro de marcas", "Proteção de patentes", "Defesa de direitos"]}
-              image={sequoiaBg} // Reusing image for texture variation
-            />
-            <ServiceCard 
-              icon={<Search className="w-6 h-6" />}
-              title="Estudo de Viabilidade"
-              description="Análise completa antes do registro para garantir sucesso."
-              tags={["Pesquisa de anterioridade", "Análise de viabilidade", "Estratégia de registro"]}
-              color="bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
-            />
-            <ServiceCard 
-              icon={<Zap className="w-6 h-6" />}
-              title="Transformação Digital"
-              description="Digitalização de processos e implementação de tecnologias."
-              tags={["Automação de processos", "Sistemas integrados", "Análise de dados"]}
-              color="bg-purple-500/10 text-purple-400 border-purple-500/20"
-            />
-          </motion.div>
+            <Button className="rounded-none h-14 px-8 text-lg bg-white text-black hover:bg-primary hover:text-black transition-colors">
+              Diagnóstico Gratuito
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Data Section - Darker/Tech vibe */}
-      <section className="py-24 md:py-32 bg-black/40 border-y border-white/5 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-        
-        <div className="container px-6 md:px-12 mx-auto relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-            <Badge variant="secondary" className="bg-white/10 hover:bg-white/20 text-white border-none">Tecnologia Avançada</Badge>
-            <h2 className="font-serif text-4xl md:text-5xl text-white">Serviços Especializados em Dados</h2>
-            <p className="text-muted-foreground text-lg font-light">
-              Soluções tecnológicas avançadas para análise de dados, prevenção à fraude e gestão de risco empresarial.
+      {/* Services - List Layout (Editorial) */}
+      <section className="py-32 px-6 md:px-12 border-t border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+          <div className="md:col-span-4">
+            <span className="font-mono text-xs uppercase tracking-widest text-primary mb-4 block">(01) — Nossos Serviços</span>
+            <h3 className="text-4xl font-serif mb-6">Expertise <br/>Multidisciplinar</h3>
+            <p className="text-muted-foreground">
+              Não somos apenas consultores. Somos arquitetos do crescimento da sua empresa, atuando em todas as frentes críticas.
             </p>
           </div>
 
-          <div className="space-y-16">
-            {/* Group 1 */}
-            <div className="space-y-8">
-              <div className="flex items-center gap-4 text-2xl font-serif text-white border-b border-white/10 pb-4">
-                <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
-                  <Database className="w-5 h-5" />
+          <div className="md:col-span-8">
+            <div className="space-y-0 divide-y divide-white/10 border-t border-b border-white/10">
+              {[
+                { title: "Assessoria Jurídica", desc: "Compliance, contratos e proteção patrimonial.", id: "01" },
+                { title: "Gestão Empresarial", desc: "Estratégia, processos e otimização operacional.", id: "02" },
+                { title: "Consultoria Jurídica", desc: "Gestão especializada para escritórios de advocacia.", id: "03" },
+                { title: "Marcas e Patentes", desc: "Proteção completa da propriedade intelectual.", id: "04" },
+                { title: "Transformação Digital", desc: "Automação e modernização de processos.", id: "05" }
+              ].map((service, index) => (
+                <div 
+                  key={index}
+                  className="group py-8 flex flex-col md:flex-row md:items-center justify-between cursor-pointer hover:bg-white/5 transition-colors px-4 -mx-4"
+                  onMouseEnter={() => setHoveredService(index)}
+                  onMouseLeave={() => setHoveredService(null)}
+                >
+                  <div className="flex items-baseline gap-6">
+                    <span className="font-mono text-xs text-muted-foreground opacity-50 group-hover:text-primary transition-colors">/{service.id}</span>
+                    <h4 className="text-3xl md:text-4xl font-light tracking-tight group-hover:translate-x-4 transition-transform duration-300">{service.title}</h4>
+                  </div>
+                  <div className="flex items-center gap-8 mt-4 md:mt-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-sm text-muted-foreground hidden md:block">{service.desc}</p>
+                    <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-primary">
+                      <ArrowDownRight className="w-5 h-5" />
+                    </div>
+                  </div>
                 </div>
-                CRM & Vendas
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                 <DataCard 
-                   title="Higienização e Enriquecimento" 
-                   desc="Mantenha seu cadastro sempre íntegro, atualizado e com informações que permitem sua empresa reter e fidelizar clientes."
-                 />
-                 <DataCard 
-                   title="Atualização de Dados" 
-                   desc="Melhore a comunicação com seus clientes. Aumente seus canais de contato, remova telefones incorretos e e-mails inválidos."
-                 />
-                 <DataCard 
-                   title="Onboarding de Dados" 
-                   desc="Melhore a experiência dos seus clientes, ofereça um processo de onboarding ágil, simples e sem atrito."
-                 />
-              </div>
-            </div>
-
-            {/* Group 2 */}
-            <div className="space-y-8">
-              <div className="flex items-center gap-4 text-2xl font-serif text-white border-b border-white/10 pb-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
-                  <CreditCard className="w-5 h-5" />
-                </div>
-                Concessão de Crédito
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                 <DataCard 
-                   title="Consulta Cadastral PF" 
-                   desc="Valide informações cadastrais dos seus clientes e proteja seu negócio de clientes fraudadores e inadimplência."
-                 />
-                 <DataCard 
-                   title="Consulta Cadastral PJ" 
-                   desc="Valide informações cadastrais dos seus clientes e proteja seu negócio de clientes fraudadores e inadimplência."
-                 />
-                 <DataCard 
-                   title="Monitoramento de Crédito" 
-                   desc="Monitore periodicamente o comportamento de crédito dos seus clientes. Receba alertas sobre qualquer alteração."
-                 />
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-white/5 bg-background">
-        <div className="container px-6 md:px-12 mx-auto flex flex-col md:flex-row items-center justify-between gap-6 opacity-60 hover:opacity-100 transition-opacity">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs font-bold text-primary-foreground">H</div>
-            <span className="font-serif tracking-tight">Hyperion Consult © 2024</span>
+      {/* Statistics - Brutalist Cards */}
+      <section className="py-20 px-6 md:px-12 bg-white text-black relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-black/10 border-y border-black/10">
+          {[
+            { value: "85%", label: "TJR Projetada", sub: "Crescimento Consistente" },
+            { value: "8.8M", label: "Receita Ano 5", sub: "Resultado Comprovado" },
+            { value: "37%", label: "Margem Líquida", sub: "Eficiência Operacional" }
+          ].map((stat, i) => (
+            <div key={i} className="py-12 md:px-12 flex flex-col justify-between h-64 group hover:bg-black/5 transition-colors">
+              <div className="flex justify-between items-start">
+                <span className="font-mono text-[10px] uppercase tracking-widest border border-black/20 px-2 py-1 rounded-full">Stat.{i+1}</span>
+                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+              </div>
+              <div>
+                <h3 className="text-6xl md:text-7xl font-serif tracking-tighter mb-2">{stat.value}</h3>
+                <p className="font-medium uppercase tracking-wide text-sm">{stat.label}</p>
+                <p className="text-black/60 text-xs mt-1">{stat.sub}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Tech/Data Section - Dark & Schematic */}
+      <section className="py-32 px-6 md:px-12 bg-background relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-white/5"></div>
+        
+        <div className="text-center mb-20 relative z-10">
+          <div className="inline-block mb-4">
+            <div className="w-3 h-3 bg-primary animate-pulse rounded-full mx-auto mb-2"></div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Hyperion Intelligence</span>
           </div>
-          <div className="text-sm text-muted-foreground">
-            Feito com excelência para o futuro.
+          <h2 className="text-4xl md:text-5xl font-medium tracking-tight max-w-2xl mx-auto">
+            Decisões baseadas em <span className="text-outline md:text-outline-thin">dados reais</span>, não em intuição.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 max-w-5xl mx-auto">
+          {[
+            { title: "Higienização de Dados", tag: "CRM" },
+            { title: "Enriquecimento Cadastral", tag: "Analytics" },
+            { title: "Análise de Risco", tag: "Compliance" },
+            { title: "Monitoramento de Crédito", tag: "Financeiro" }
+          ].map((item, i) => (
+            <div key={i} className="bg-background p-8 md:p-12 hover:bg-white/5 transition-colors group">
+              <div className="flex justify-between items-start mb-12">
+                <div className="w-2 h-2 bg-white/20 group-hover:bg-primary transition-colors"></div>
+                <span className="font-mono text-[10px] text-muted-foreground">{item.tag}</span>
+              </div>
+              <h3 className="text-2xl font-light group-hover:text-primary transition-colors">{item.title}</h3>
+              <div className="mt-8 flex items-center gap-2 text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity">
+                <Plus className="w-3 h-3" />
+                <span>EXPLORAR MÓDULO</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer - Massive */}
+      <footer className="bg-primary text-black pt-24 pb-12 px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
+          <div>
+            <h2 className="font-serif text-5xl md:text-7xl tracking-tighter leading-[0.9] mb-8">
+              Vamos construir <br/>o futuro.
+            </h2>
+            <Button className="bg-black text-white hover:bg-black/80 rounded-none h-14 px-8 text-lg">
+              Iniciar Conversa
+            </Button>
+          </div>
+          <div className="grid grid-cols-2 gap-8 font-mono text-sm">
+            <div>
+              <h4 className="uppercase tracking-widest mb-4 border-b border-black/20 pb-2">Contato</h4>
+              <ul className="space-y-2">
+                <li>contato@hyperion.com</li>
+                <li>+55 11 99999-9999</li>
+                <li>Av. Paulista, 0000</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="uppercase tracking-widest mb-4 border-b border-black/20 pb-2">Social</h4>
+              <ul className="space-y-2">
+                <li>LinkedIn</li>
+                <li>Instagram</li>
+                <li>Medium</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div className="flex flex-col md:flex-row justify-between items-end border-t border-black/10 pt-8">
+          <h1 className="text-[12vw] leading-none font-bold tracking-tighter opacity-10 select-none pointer-events-none translate-y-4">
+            HYPERION
+          </h1>
+          <div className="font-mono text-xs uppercase tracking-widest pb-2">
+            © 2024 Hyperion Consult. All Rights Reserved.
           </div>
         </div>
       </footer>
     </div>
   );
-}
-
-// Subcomponents
-
-function ServiceCard({ icon, title, description, tags, color, image }: any) {
-  return (
-    <Card className={`group relative overflow-hidden bg-card border-white/5 hover:border-white/10 transition-all duration-500 hover:-translate-y-1 h-full flex flex-col ${image ? "border-0" : ""}`}>
-      {image && (
-        <>
-          <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-40 mix-blend-overlay" style={{ backgroundImage: `url(${image})` }} />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-        </>
-      )}
-      
-      <CardHeader className="relative z-10 pb-2">
-        <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors ${color || "bg-white/5 text-white border border-white/10"}`}>
-          {icon}
-        </div>
-        <CardTitle className="font-serif text-2xl leading-tight group-hover:text-primary transition-colors">{title}</CardTitle>
-      </CardHeader>
-      
-      <CardContent className="relative z-10 space-y-6 flex-grow flex flex-col justify-between">
-        <p className="text-muted-foreground font-light leading-relaxed">{description}</p>
-        
-        <div className="space-y-2 pt-4 border-t border-white/5">
-          {tags.map((tag: string, i: number) => (
-            <div key={i} className="flex items-center gap-2 text-sm text-muted-foreground/80 group-hover:text-white transition-colors">
-              <div className="w-1 h-1 rounded-full bg-primary/50" />
-              {tag}
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function DataCard({ title, desc }: any) {
-  return (
-    <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors group">
-      <h3 className="text-lg font-medium text-white mb-3 group-hover:text-primary transition-colors">{title}</h3>
-      <p className="text-sm text-muted-foreground leading-relaxed">
-        {desc}
-      </p>
-    </div>
-  )
 }
