@@ -1,13 +1,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   ArrowRight,
-  ArrowDownRight,
-  Menu,
-  X,
-  Plus
+  ChevronDown,
+  ArrowUpRight,
+  Circle,
+  Play
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useRef } from "react";
+import abstractBg from "@assets/generated_images/abstract_architectural_wood_and_glass_structure_in_forest.png";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -16,217 +17,272 @@ export default function Home() {
     offset: ["start start", "end end"]
   });
 
-  const [hoveredService, setHoveredService] = useState<number | null>(null);
-
+  // Parallax for hero image
+  const heroY = useTransform(scrollYProgress, [0, 0.2], ["0%", "20%"]);
+  
   return (
-    <div ref={containerRef} className="min-h-screen bg-background text-foreground bg-noise overflow-x-hidden selection:bg-primary selection:text-primary-foreground font-sans">
+    <div ref={containerRef} className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-primary-foreground font-sans">
       
-      {/* Brutalist Grid Lines Background */}
-      <div className="fixed inset-0 pointer-events-none z-0 flex justify-between px-6 md:px-12 opacity-10">
-        <div className="w-px h-full bg-current"></div>
-        <div className="w-px h-full bg-current hidden md:block"></div>
-        <div className="w-px h-full bg-current hidden md:block"></div>
-        <div className="w-px h-full bg-current"></div>
+      {/* Navigation - Minimal & Top Aligned */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-6 mix-blend-difference text-white">
+        <span className="font-sans text-xs tracking-widest uppercase font-semibold">Hyperion Consult</span>
+        <div className="hidden md:flex gap-8 text-xs tracking-widest uppercase">
+          <a href="#" className="hover:text-primary transition-colors">Expertise</a>
+          <a href="#" className="hover:text-primary transition-colors">Método</a>
+          <a href="#" className="hover:text-primary transition-colors">Insights</a>
+        </div>
+        <Button variant="outline" className="rounded-full border-white/20 hover:bg-white hover:text-black hover:border-white transition-all text-xs uppercase tracking-widest h-9 px-6 bg-transparent text-white">
+          Contato
+        </Button>
+      </nav>
+
+      {/* Hero Section - Swiss Layout */}
+      <section className="relative h-screen flex flex-col md:flex-row border-b border-white/10">
+        {/* Left: Typography & Content */}
+        <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center relative z-10 bg-background/90 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none">
+          <div className="max-w-xl">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex items-center gap-4 mb-8"
+            >
+              <div className="w-12 h-[1px] bg-primary"></div>
+              <span className="text-primary text-xs uppercase tracking-[0.2em]">Consultoria Estratégica</span>
+            </motion.div>
+
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="font-serif text-6xl md:text-8xl leading-[0.9] font-normal mb-8 text-balance"
+            >
+              Crescimento <br/>
+              <span className="italic text-white/50">perene</span> e <br/>
+              estruturado.
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-muted-foreground text-lg font-light leading-relaxed max-w-md mb-12"
+            >
+              Unimos rigor jurídico e inteligência de dados para construir empresas que atravessam gerações.
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex items-center gap-6"
+            >
+              <Button className="rounded-full h-14 w-14 p-0 bg-primary text-background hover:bg-white hover:text-black transition-all duration-500">
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+              <span className="text-xs uppercase tracking-widest text-white/60">Iniciar Diagnóstico</span>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Right: Abstract Visual */}
+        <div className="absolute inset-0 md:relative md:w-1/2 h-full overflow-hidden border-l border-white/10">
+          <motion.div style={{ y: heroY }} className="w-full h-[120%] -mt-[10%]">
+            <img 
+              src={abstractBg} 
+              alt="Abstract Architecture" 
+              className="w-full h-full object-cover opacity-40 md:opacity-100 grayscale hover:grayscale-0 transition-all duration-1000 ease-out"
+            />
+          </motion.div>
+          
+          {/* Decorative Grid Overlay */}
+          <div className="absolute inset-0 pointer-events-none grid grid-cols-3 grid-rows-3 border-collapse opacity-20">
+            {[...Array(9)].map((_, i) => (
+              <div key={i} className="border border-white/20"></div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats ticker */}
+      <div className="border-b border-white/10 overflow-hidden bg-background">
+        <div className="flex whitespace-nowrap py-6 animate-marquee">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex items-center gap-12 md:gap-24 px-12 opacity-50">
+              <span className="text-4xl font-serif">R$ 8.8M <span className="text-xs font-sans tracking-widest uppercase ml-2">Receita Ano 5</span></span>
+              <Circle className="w-2 h-2 fill-primary text-primary" />
+              <span className="text-4xl font-serif">85% <span className="text-xs font-sans tracking-widest uppercase ml-2">TJR Projetada</span></span>
+              <Circle className="w-2 h-2 fill-primary text-primary" />
+              <span className="text-4xl font-serif">37% <span className="text-xs font-sans tracking-widest uppercase ml-2">Margem Líquida</span></span>
+              <Circle className="w-2 h-2 fill-primary text-primary" />
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Header - Minimal & Technical */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-6 md:px-12 mix-blend-difference text-white">
-        <div className="flex justify-between items-start">
-          <div>
-            <h1 className="text-xl font-bold tracking-tighter uppercase font-mono">Hyperion<span className="text-primary">.</span></h1>
-            <p className="text-[10px] uppercase tracking-widest opacity-60 mt-1 font-mono">Consultoria Estratégica</p>
+      {/* Services - Grid System */}
+      <section className="py-32 px-8 md:px-16">
+        <div className="flex flex-col md:flex-row gap-16 mb-24">
+          <div className="w-full md:w-1/3">
+            <span className="block w-full h-[1px] bg-white/20 mb-8"></span>
+            <span className="text-primary text-xs uppercase tracking-widest mb-4 block">01 / Soluções</span>
+            <h2 className="font-serif text-5xl leading-tight">Expertise 360º</h2>
           </div>
-          
-          <button className="group flex items-center gap-2 text-sm uppercase tracking-wider font-medium hover:text-primary transition-colors">
-            <span className="hidden md:block">Menu</span>
-            <div className="w-8 h-8 border border-current flex items-center justify-center rounded-full group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all">
-              <Menu className="w-4 h-4" />
-            </div>
-          </button>
+          <div className="w-full md:w-2/3 flex flex-col justify-end">
+             <p className="text-xl text-muted-foreground font-light max-w-xl ml-auto">
+               Uma abordagem integrada que elimina silos entre jurídico, gestão e tecnologia.
+             </p>
+          </div>
         </div>
-      </header>
 
-      {/* Hero Section - Typography Driven */}
-      <section className="relative min-h-screen flex flex-col justify-end pb-24 px-6 md:px-12 pt-32">
-        <div className="max-w-[90vw] z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
-          >
-            <h1 className="font-serif text-[15vw] leading-[0.8] tracking-tighter mix-blend-overlay opacity-20 select-none absolute -top-[0.6em] left-0 pointer-events-none">
-              SEQUOIA
-            </h1>
-            <h2 className="text-6xl md:text-8xl lg:text-9xl font-medium tracking-tighter leading-[0.9] mb-12">
-              Cresça com <br />
-              <span className="font-serif italic text-primary">Solidez</span> e <br />
-              <span className="text-outline-thin opacity-80">Propósito.</span>
-            </h2>
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+           <ServiceItem 
+             number="01" 
+             title="Jurídico & Compliance" 
+             desc="Contratos, LGPD e blindagem patrimonial para operações seguras." 
+           />
+           <ServiceItem 
+             number="02" 
+             title="Gestão Empresarial" 
+             desc="Otimização de processos e planejamento estratégico de longo prazo." 
+           />
+           <ServiceItem 
+             number="03" 
+             title="Consultoria Jurídica" 
+             desc="Gestão especializada para crescimento de escritórios de advocacia." 
+           />
+           <ServiceItem 
+             number="04" 
+             title="Propriedade Intelectual" 
+             desc="Registro de marcas, patentes e defesa de ativos intangíveis." 
+           />
+           <ServiceItem 
+             number="05" 
+             title="Transformação Digital" 
+             desc="Implementação de sistemas e automação de fluxos de trabalho." 
+           />
+           <ServiceItem 
+             number="06" 
+             title="Análise de Viabilidade" 
+             desc="Estudos de mercado e pesquisa de anterioridade para novas marcas." 
+           />
+        </div>
+      </section>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 border-t border-white/10 pt-8">
-            <div className="max-w-md">
-              <p className="text-lg md:text-xl font-light text-muted-foreground leading-relaxed">
-                Assessoria empresarial multidisciplinar. Combinamos rigor jurídico com visão estratégica para construir legados.
-              </p>
+      {/* Data Section - Architectural Diagrams */}
+      <section className="bg-white text-black py-32 px-8 md:px-16 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-100/50 skew-x-12 translate-x-1/4 pointer-events-none"></div>
+
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-24">
+          <div>
+            <span className="text-black/50 text-xs uppercase tracking-widest mb-4 block">02 / Tecnologia</span>
+            <h2 className="font-serif text-5xl md:text-6xl mb-12">Inteligência de Dados</h2>
+            
+            <div className="space-y-0 border-t border-black/10">
+              <AccordionItem title="CRM & Vendas" desc="Higienização de base e enriquecimento cadastral." />
+              <AccordionItem title="Concessão de Crédito" desc="Análise de risco e background check automatizado." />
+              <AccordionItem title="Prevenção à Fraude" desc="Monitoramento contínuo de CPFs e CNPJs." />
             </div>
             
-            <div className="flex items-center gap-4">
-              <div className="h-px w-12 bg-primary"></div>
-              <span className="font-mono text-xs uppercase tracking-widest text-primary">Est. 2024</span>
+            <div className="mt-12">
+               <Button className="rounded-full border border-black/10 hover:bg-black hover:text-white transition-colors bg-transparent text-black h-12 px-8 text-xs uppercase tracking-widest">
+                 Ver especificações técnicas
+               </Button>
             </div>
+          </div>
 
-            <Button className="rounded-none h-14 px-8 text-lg bg-white text-black hover:bg-primary hover:text-black transition-colors">
-              Diagnóstico Gratuito
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+          <div className="bg-black text-white p-12 flex flex-col justify-between relative overflow-hidden">
+             {/* Decorative graphic */}
+             <div className="absolute top-12 right-12 w-24 h-24 border border-white/20 rounded-full flex items-center justify-center animate-spin-slow">
+               <div className="w-2 h-2 bg-white rounded-full"></div>
+             </div>
+
+             <div>
+               <div className="font-mono text-xs text-white/50 mb-2">SYSTEM_STATUS</div>
+               <div className="text-4xl font-mono text-primary mb-8">ONLINE</div>
+               <p className="text-white/70 font-light leading-relaxed max-w-sm">
+                 Nossa infraestrutura processa milhões de datapoints para garantir que sua tomada de decisão seja baseada em fatos, não suposições.
+               </p>
+             </div>
+
+             <div className="grid grid-cols-2 gap-8 mt-16 pt-8 border-t border-white/10">
+               <div>
+                 <div className="text-2xl font-serif">99.9%</div>
+                 <div className="text-[10px] uppercase tracking-widest text-white/50">Uptime</div>
+               </div>
+               <div>
+                 <div className="text-2xl font-serif">&lt;100ms</div>
+                 <div className="text-[10px] uppercase tracking-widest text-white/50">Latência</div>
+               </div>
+             </div>
           </div>
         </div>
       </section>
 
-      {/* Services - List Layout (Editorial) */}
-      <section className="py-32 px-6 md:px-12 border-t border-white/10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-          <div className="md:col-span-4">
-            <span className="font-mono text-xs uppercase tracking-widest text-primary mb-4 block">(01) — Nossos Serviços</span>
-            <h3 className="text-4xl font-serif mb-6">Expertise <br/>Multidisciplinar</h3>
-            <p className="text-muted-foreground">
-              Não somos apenas consultores. Somos arquitetos do crescimento da sua empresa, atuando em todas as frentes críticas.
-            </p>
-          </div>
-
-          <div className="md:col-span-8">
-            <div className="space-y-0 divide-y divide-white/10 border-t border-b border-white/10">
-              {[
-                { title: "Assessoria Jurídica", desc: "Compliance, contratos e proteção patrimonial.", id: "01" },
-                { title: "Gestão Empresarial", desc: "Estratégia, processos e otimização operacional.", id: "02" },
-                { title: "Consultoria Jurídica", desc: "Gestão especializada para escritórios de advocacia.", id: "03" },
-                { title: "Marcas e Patentes", desc: "Proteção completa da propriedade intelectual.", id: "04" },
-                { title: "Transformação Digital", desc: "Automação e modernização de processos.", id: "05" }
-              ].map((service, index) => (
-                <div 
-                  key={index}
-                  className="group py-8 flex flex-col md:flex-row md:items-center justify-between cursor-pointer hover:bg-white/5 transition-colors px-4 -mx-4"
-                  onMouseEnter={() => setHoveredService(index)}
-                  onMouseLeave={() => setHoveredService(null)}
-                >
-                  <div className="flex items-baseline gap-6">
-                    <span className="font-mono text-xs text-muted-foreground opacity-50 group-hover:text-primary transition-colors">/{service.id}</span>
-                    <h4 className="text-3xl md:text-4xl font-light tracking-tight group-hover:translate-x-4 transition-transform duration-300">{service.title}</h4>
-                  </div>
-                  <div className="flex items-center gap-8 mt-4 md:mt-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-sm text-muted-foreground hidden md:block">{service.desc}</p>
-                    <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-primary">
-                      <ArrowDownRight className="w-5 h-5" />
-                    </div>
-                  </div>
-                </div>
-              ))}
+      {/* Footer */}
+      <footer className="py-24 px-8 md:px-16 border-t border-white/10 flex flex-col gap-24">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+          <h2 className="font-serif text-6xl md:text-8xl text-primary opacity-80">Hyperion.</h2>
+          
+          <div className="flex flex-col md:flex-row gap-12 md:gap-24">
+            <div className="flex flex-col gap-4">
+              <span className="text-xs uppercase tracking-widest text-muted-foreground">Endereço</span>
+              <p className="font-light">Av. Brigadeiro Faria Lima, 3477<br/>São Paulo, SP</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Statistics - Brutalist Cards */}
-      <section className="py-20 px-6 md:px-12 bg-white text-black relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-black/10 border-y border-black/10">
-          {[
-            { value: "85%", label: "TJR Projetada", sub: "Crescimento Consistente" },
-            { value: "8.8M", label: "Receita Ano 5", sub: "Resultado Comprovado" },
-            { value: "37%", label: "Margem Líquida", sub: "Eficiência Operacional" }
-          ].map((stat, i) => (
-            <div key={i} className="py-12 md:px-12 flex flex-col justify-between h-64 group hover:bg-black/5 transition-colors">
-              <div className="flex justify-between items-start">
-                <span className="font-mono text-[10px] uppercase tracking-widest border border-black/20 px-2 py-1 rounded-full">Stat.{i+1}</span>
-                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
-              </div>
-              <div>
-                <h3 className="text-6xl md:text-7xl font-serif tracking-tighter mb-2">{stat.value}</h3>
-                <p className="font-medium uppercase tracking-wide text-sm">{stat.label}</p>
-                <p className="text-black/60 text-xs mt-1">{stat.sub}</p>
-              </div>
+            <div className="flex flex-col gap-4">
+              <span className="text-xs uppercase tracking-widest text-muted-foreground">Contato</span>
+              <p className="font-light">ola@hyperion.com<br/>+55 11 3000-0000</p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Tech/Data Section - Dark & Schematic */}
-      <section className="py-32 px-6 md:px-12 bg-background relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-white/5"></div>
-        
-        <div className="text-center mb-20 relative z-10">
-          <div className="inline-block mb-4">
-            <div className="w-3 h-3 bg-primary animate-pulse rounded-full mx-auto mb-2"></div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Hyperion Intelligence</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-medium tracking-tight max-w-2xl mx-auto">
-            Decisões baseadas em <span className="text-outline md:text-outline-thin">dados reais</span>, não em intuição.
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 max-w-5xl mx-auto">
-          {[
-            { title: "Higienização de Dados", tag: "CRM" },
-            { title: "Enriquecimento Cadastral", tag: "Analytics" },
-            { title: "Análise de Risco", tag: "Compliance" },
-            { title: "Monitoramento de Crédito", tag: "Financeiro" }
-          ].map((item, i) => (
-            <div key={i} className="bg-background p-8 md:p-12 hover:bg-white/5 transition-colors group">
-              <div className="flex justify-between items-start mb-12">
-                <div className="w-2 h-2 bg-white/20 group-hover:bg-primary transition-colors"></div>
-                <span className="font-mono text-[10px] text-muted-foreground">{item.tag}</span>
-              </div>
-              <h3 className="text-2xl font-light group-hover:text-primary transition-colors">{item.title}</h3>
-              <div className="mt-8 flex items-center gap-2 text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity">
-                <Plus className="w-3 h-3" />
-                <span>EXPLORAR MÓDULO</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Footer - Massive */}
-      <footer className="bg-primary text-black pt-24 pb-12 px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
-          <div>
-            <h2 className="font-serif text-5xl md:text-7xl tracking-tighter leading-[0.9] mb-8">
-              Vamos construir <br/>o futuro.
-            </h2>
-            <Button className="bg-black text-white hover:bg-black/80 rounded-none h-14 px-8 text-lg">
-              Iniciar Conversa
-            </Button>
-          </div>
-          <div className="grid grid-cols-2 gap-8 font-mono text-sm">
-            <div>
-              <h4 className="uppercase tracking-widest mb-4 border-b border-black/20 pb-2">Contato</h4>
-              <ul className="space-y-2">
-                <li>contato@hyperion.com</li>
-                <li>+55 11 99999-9999</li>
-                <li>Av. Paulista, 0000</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="uppercase tracking-widest mb-4 border-b border-black/20 pb-2">Social</h4>
-              <ul className="space-y-2">
-                <li>LinkedIn</li>
-                <li>Instagram</li>
-                <li>Medium</li>
-              </ul>
+            <div className="flex flex-col gap-4">
+               <span className="text-xs uppercase tracking-widest text-muted-foreground">Social</span>
+               <div className="flex gap-4">
+                 <a href="#" className="hover:text-primary transition-colors">LN</a>
+                 <a href="#" className="hover:text-primary transition-colors">IG</a>
+                 <a href="#" className="hover:text-primary transition-colors">TW</a>
+               </div>
             </div>
           </div>
         </div>
         
-        <div className="flex flex-col md:flex-row justify-between items-end border-t border-black/10 pt-8">
-          <h1 className="text-[12vw] leading-none font-bold tracking-tighter opacity-10 select-none pointer-events-none translate-y-4">
-            HYPERION
-          </h1>
-          <div className="font-mono text-xs uppercase tracking-widest pb-2">
-            © 2024 Hyperion Consult. All Rights Reserved.
-          </div>
+        <div className="flex justify-between items-center text-xs text-muted-foreground border-t border-white/5 pt-8">
+          <span>© 2024 Hyperion Consultoria.</span>
+          <span>Designed by Replit</span>
         </div>
       </footer>
+    </div>
+  );
+}
+
+// Components
+
+function ServiceItem({ number, title, desc }: { number: string, title: string, desc: string }) {
+  return (
+    <div className="group border-t border-white/10 pt-8 hover:border-primary/50 transition-colors duration-500 cursor-pointer">
+      <div className="flex justify-between items-start mb-4">
+        <span className="font-mono text-xs text-muted-foreground group-hover:text-primary transition-colors">{number}</span>
+        <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 transition-all duration-300" />
+      </div>
+      <h3 className="text-2xl font-serif mb-4 group-hover:text-white transition-colors">{title}</h3>
+      <p className="text-sm text-muted-foreground font-light leading-relaxed group-hover:text-white/80 transition-colors">{desc}</p>
+    </div>
+  );
+}
+
+function AccordionItem({ title, desc }: { title: string, desc: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div 
+      className="border-b border-black/10 py-6 cursor-pointer group"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <div className="flex justify-between items-center">
+        <h3 className="text-xl font-medium group-hover:text-black/70 transition-colors">{title}</h3>
+        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+      </div>
+      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-24 opacity-100 mt-4" : "max-h-0 opacity-0"}`}>
+        <p className="text-black/60 font-light">{desc}</p>
+      </div>
     </div>
   );
 }
