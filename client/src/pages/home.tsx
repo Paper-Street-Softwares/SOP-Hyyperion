@@ -24,6 +24,14 @@ import dataBg from '@assets/generated_images/abstract_digital_data_stream_in_dar
 import { Link } from 'react-scroll'
 import { getWhatsappLink } from '@/utils/whatsapp'
 import imgLogo from '../assets/hero/logo.webp'
+import img1 from '../assets/logos/logo1.png'
+import img2 from '../assets/logos/logo2.png'
+import img3 from '../assets/logos/logo3.png'
+import img4 from '../assets/logos/logo4.png'
+import img5 from '../assets/logos/logo5.png'
+import img6 from '../assets/logos/logo6.png'
+import img7 from '../assets/logos/logo7.png'
+import img8 from '../assets/logos/logo8.png'
 
 export default function Home() {
   const [active, setActive] = useState()
@@ -36,6 +44,8 @@ export default function Home() {
     phone: '11965763714',
     message: 'Olá! Vim através do site e gostaria de tirar umas dúvidas.',
   })
+
+  const imagesLogo = [img1, img2, img3, img4, img5, img6, img7, img8]
 
   return (
     <div
@@ -532,13 +542,66 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Button
               buttonLink={ctaWpp}
-              className="bg-primary cursor-pointer scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
+              className="bg-primary w-[90%] cursor-pointer scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
             >
               Solicitar Demo TargetSmart
             </Button>
           </div>
         </div>
       </section>
+
+      {/*section nova */}
+      <section className="bg-orange-950/10 py-16 px-6">
+        <div className="container max-w-[1215px] mx-auto">
+          {/* Cabeçalho */}
+          <div className="text-center mb-12">
+            <span className="text-primary font-mono text-xs uppercase tracking-widest">
+              Parcerias Estratégicas
+            </span>
+            <h2 className="text-white font-serif text-3xl md:text-4xl mt-4">
+              Parceiros Oficiais da Hyyperion
+            </h2>
+            <p className="text-orange-200/60 text-sm md:text-base mt-4 max-w-2xl mx-auto">
+              Trabalhamos com os melhores parceiros do mercado para oferecer
+              soluções completas e integradas aos nossos clientes.
+            </p>
+          </div>
+
+          {/* Grid de Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {imagesLogo.map((logo, index) => (
+              <div key={index} className="flex justify-center">
+                <img
+                  src={logo}
+                  className="max-w-[200px] max-h-full w-auto h-auto object-contain transition-all"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Seção CTA Inferior (Opcional, conforme a imagem) */}
+          <div className="mt-16 text-center md:text-start max-w-[1215px] justify-evenly m-auto p-8 bg-background border border-white/10 rounded-2xl flex flex-col md:flex-row gap-8 items-center">
+            <div>
+              {' '}
+              <h3 className="text-primary font-bold text-2xl mb-2">
+                Quer se tornar um parceiro da Hyyperion?
+              </h3>
+              <p className="text-white text-sm mb-6 max-w-xl mx-auto">
+                Estamos sempre em busca de parcerias estratégicas que agreguem
+                valor aos nossos clientes. Entre em contato e descubra como
+                podemos crescer juntos.
+              </p>
+            </div>
+            <Button
+              buttonLink={ctaWpp}
+              className="bg-primary cursor-pointer scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
+            >
+              Fale sobre parcerias
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-20 bg-white text-background">
         <div className="container px-6 md:px-12 mx-auto max-w-[1215px]">
