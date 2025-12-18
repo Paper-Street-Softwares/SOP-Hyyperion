@@ -554,7 +554,7 @@ export default function Home() {
         </div>
       </section>
       {/* Pricing / Stages */}
-      <section
+      {/* <section
         id="planos"
         className="py-24 px-6 md:px-12 bg-background border-t border-white/5"
       >
@@ -608,7 +608,7 @@ export default function Home() {
             ]}
           />
         </div>
-      </section>
+      </section> */}
       {/* Footer CTA */}
       <section className="py-32 px-6 md:px-12 bg-background relative overflow-hidden text-center border-t border-white/5">
         <div className="absolute inset-0 bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
