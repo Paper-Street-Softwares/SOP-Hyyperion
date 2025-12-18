@@ -13,20 +13,14 @@
     "skipLibCheck": true,
     "noEmit": true,
     "incremental": true,
-    "tsBuildInfoFile": "./node_modules/.cache/tsbuildinfo",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./client/src/*"],
+      "@/*": ["./src/*"],
       "@shared/*": ["./shared/*"],
-      "@assets/*": ["./client/src/assets/*"]
+      "@assets/*": ["./src/assets/*"]
     },
     "types": ["node", "vite/client"]
   },
-  "include": [
-    "client/src/**/*",
-    "shared/**/*",
-    "server/**/*",
-    "client/src/content/content.js"
-  ],
+  "include": ["src/**/*", "shared/**/*", "server/**/*"],
   "exclude": ["node_modules", "build", "dist", "**/*.test.ts"]
 }

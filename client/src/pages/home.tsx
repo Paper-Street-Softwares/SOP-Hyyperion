@@ -30,8 +30,8 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState()
   const containerRef = useRef(null)
 
-  const ids = ['servicos', 'diferenciais', 'targetsmart', 'planos']
-  const links = ['Serviços', 'Diferenciais', 'TargetSmart', 'Planos']
+  const ids = ['servicos', 'diferenciais', 'targetsmart']
+  const links = ['Serviços', 'Diferenciais', 'TargetSmart']
   const ctaWpp = getWhatsappLink({
     phone: '11965763714',
     message: 'Olá! Vim através do site e gostaria de tirar umas dúvidas.',
@@ -43,7 +43,7 @@ export default function Home() {
       className="min-h-screen m-auto bg-background text-foreground bg-grain overflow-x-hidden selection:bg-primary selection:text-primary-foreground font-sans"
     >
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 m-auto flex justify-between items-center px-6 py-6 md:px-12 transition-all duration-300 bg-background/80 hover:bg-background/40 backdrop-blur-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 m-auto flex justify-between items-center px-6 py-6 md:px-12 transition-all duration-300 bg-background/80 hover:bg-background/90 backdrop-blur-sm">
         <div className="flex justify-between max-w-[1215px] w-full m-auto">
           <div className="flex items-center gap-3">
             <div className="w-2 h-8 bg-primary rounded-full"></div>
@@ -554,7 +554,7 @@ export default function Home() {
         </div>
       </section>
       {/* Pricing / Stages */}
-      <section
+      {/* <section
         id="planos"
         className="py-24 px-6 md:px-12 bg-background border-t border-white/5"
       >
@@ -608,7 +608,7 @@ export default function Home() {
             ]}
           />
         </div>
-      </section>
+      </section> */}
       {/* Footer CTA */}
       <section className="py-32 px-6 md:px-12 bg-background relative overflow-hidden text-center border-t border-white/5">
         <div className="absolute inset-0 bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
