@@ -542,7 +542,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Button
               buttonLink={ctaWpp}
-              className="bg-primary w-[90%] cursor-pointer scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
+              className="bg-primary w-[90%] sm:w-auto cursor-pointer scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
             >
               Solicitar Demo TargetSmart
             </Button>
