@@ -185,7 +185,7 @@ export default function Home() {
           >
             <Button
               buttonLink={ctaWpp}
-              className="bg-primary cursor-pointer text-background scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-14 px-8 rounded-full text-lg"
+              className="bg-primary cursor-pointer text-background ml-2 scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-14 px-8 rounded-full text-lg"
             >
               Diagnóstico Gratuito
               <ArrowRight className="ml-2 w-5 h-5" />
