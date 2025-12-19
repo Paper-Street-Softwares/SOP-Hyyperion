@@ -16,6 +16,7 @@ import {
   Check,
   X,
   Phone,
+  Mail,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useEffect, useRef, useState } from 'react'
@@ -50,8 +51,8 @@ export default function Home() {
     return () => clearTimeout(timer)
   }, [])
 
-  const ids = ['servicos', 'diferenciais', 'targetsmart']
-  const links = ['Serviços', 'Diferenciais', 'TargetSmart']
+  const ids = ['servicos', 'diferenciais', 'sobre']
+  const links = ['Serviços', 'Diferenciais', 'Sobre']
   const ctaWpp = getWhatsappLink({
     phone: '11965763714',
     message: 'Olá! Vim através do site e gostaria de tirar umas dúvidas.',
@@ -415,7 +416,7 @@ export default function Home() {
         </div>
       </section>
       {/* Philosophy Section */}
-      <section className="py-24 bg-white/5 border-y border-white/5">
+      <section className="py-24 bg-white/5 border-y border-white/5" id="sobre">
         <div className="text-center mb-16 max-w-[1215px] w-[90%] m-auto">
           <span className="text-primary text-xs uppercase tracking-widest font-medium">
             Sobre Nós
@@ -480,7 +481,7 @@ export default function Home() {
         <div className="relative z-10 container mx-auto w-[90%] max-w-[1215px]">
           <div className="text-center mb-12">
             <span className="text-primary font-mono text-xs uppercase tracking-widest">
-              Powered by
+              Tecnologia de Ponta
             </span>
             <h2 className="text-5xl md:text-6xl font-serif text-white mt-2 tracking-tight">
               TARGET <br className="md:hidden" />
@@ -721,29 +722,109 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <footer className="py-6 md:py-12 border-t border-white/5 bg-background text-center md:text-left max-w-[1215px] w-[90%] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground gap-6">
-          <div className="flex items-start gap-2 w-full max-w-[300px] md:max-w-[400px] justify-center lg:justify-start">
-            <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center text-primary font-serif">
-              H
+      <footer className="py-6 border-t border-white/5 bg-background text-center md:text-left max-w-[1215px] w-[90%] mx-auto">
+        <div className="w-full text-slate-300">
+          <div className="mx-auto py-16">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+              {/* COLUNA 1 — LOGO / DESCRIÇÃO */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <img src={imgLogo} alt="" />
+                </div>
+
+                <p className="text-md leading-relaxed text-slate-400 w-full text-start">
+                  Assessoria empresarial multidisciplinar inspirada na
+                  longevidade e crescimento sustentável das sequoias.
+                </p>
+
+                <div className="flex gap-3 pt-2">
+                  <Button
+                    buttonLink="mailto:email@exemple"
+                    className="group bg-transparent h-10 w-10 rounded-lg border border-primary/40 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:scale-100 scale-105 cursor-pointer"
+                  >
+                    <span>
+                      {' '}
+                      <Mail
+                        size={16}
+                        className="text-primary transition-colors duration-300 group-hover:text-white"
+                      />
+                    </span>
+                  </Button>
+
+                  <Button
+                    buttonLink={ctaWpp}
+                    className="group bg-transparent h-10 w-10 rounded-lg border border-primary/40 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:scale-100 scale-105 cursor-pointer"
+                  >
+                    <span>
+                      <Phone
+                        width={16}
+                        className="text-primary transition-colors duration-300 group-hover:text-white"
+                      />
+                    </span>
+                  </Button>
+                </div>
+              </div>
+
+              {/* COLUNA 2 — SERVIÇOS */}
+              <div>
+                <h4 className="mb-4 text-lg font-bold uppercase text-white flex justify-start">
+                  Serviços
+                </h4>
+                <ul className="space-y-2 text-md text-slate-400 flex flex-col text-start items-start">
+                  <li>Assessoria Jurídica</li>
+                  <li>Consultoria de Gestão Empresarial</li>
+                  <li>Consultoria para Escritórios de Advocacia</li>
+                  <li>Registro de Marcas e Patentes</li>
+                  <li>Estudo de Viabilidade para Registro de Marca</li>
+                  <li>Transformação Digital</li>
+                </ul>
+              </div>
+
+              {/* COLUNA 3 — EMPRESA */}
+              <div className="flex flex-col items-start text-start">
+                <h4 className="mb-4 text-text-lg font-semibold uppercase text-white">
+                  Empresa
+                </h4>
+                <ul className="space-y-2 text-md text-slate-400">
+                  <li>Sobre Nós</li>
+                  <li>Nossa Filosofia</li>
+                  <li>Casos de Sucesso</li>
+                  <li>Blog</li>
+                </ul>
+              </div>
+
+              {/* COLUNA 4 — CONTATO */}
+              <div className="flex flex-col items-start text-start">
+                <h4 className="mb-4 text-lg font-semibold uppercase text-white">
+                  Contato
+                </h4>
+                <ul className="space-y-3 text-md text-slate-400">
+                  <li className="flex items-center gap-2">
+                    📞 <span>(11) 9999-9999</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    ✉️{' '}
+                    <span className="lg:text-sm">contato@hyyperion.com.br</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    📍 <span>São Paulo, SP</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <span className="">
-              © 2024 Hyyperion Consult. Todos os direitos reservados.
-            </span>
           </div>
-          <div className="flex flex-wrap gap-2 w-full justify-center sm:gap-4 lg:justify-end">
-            <a href="#" className="hover:text-white">
-              Política de Privacidade
-            </a>
-            <a href="#" className="hover:text-white">
-              Termos de Uso
-            </a>
-            <a href="#" className="hover:text-white">
-              LinkedIn
-            </a>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground">
+          <div className="flex items-center gap-2 w-full  justify-center lg:justify-center">
+            <span className="text-sm">
+              © 2025 Hyyperion Assessoria Empresarial. Todos os direitos
+              reservados.{' '}
+            </span>
           </div>
         </div>
       </footer>{' '}
+      {/* Chat modal */}
       <Dialog
         className="bg-white p-6 rounded-lg text-black/40"
         // header="Teste"
@@ -785,7 +866,7 @@ export default function Home() {
         <div className="flex flex-col gap-3 items-center mb-4">
           <Button
             buttonLink={ctaWpp}
-            className="bg-primary cursor-pointer text-background lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:border hover:border-background hover:text-black transition-all h-8 w-[90%] rounded-lg text-sm"
+            className="bg-primary cursor-pointer text-background lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:border hover:border-background hover:text-black transition-all h-8 w-[95%] rounded-lg text-sm"
           >
             <span>
               <Phone />
@@ -795,7 +876,7 @@ export default function Home() {
 
           <Button
             buttonLink={ctaWpp}
-            className="bg-white cursor-pointer text-background border border-primary lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-8 w-[90%] rounded-lg text-sm"
+            className="bg-white cursor-pointer text-background border border-primary lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-8 w-[95%] rounded-lg text-sm"
           >
             💬 WhatsApp
           </Button>
