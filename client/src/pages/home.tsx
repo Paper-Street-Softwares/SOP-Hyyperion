@@ -131,7 +131,7 @@ export default function Home() {
         </div>
       )}
       {/* Hero Section */}
-      <section className="relative min-h-[100vh] flex flex-col justify-center pt-24 lg:pt-40 pb-20 px-6 sm:px-9 lg:px-14 m-auto">
+      <section className="relative min-h-[100vh] flex flex-col justify-center pt-32 lg:pt-40 pb-20 px-6 sm:px-9 lg:px-14 m-auto">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-background/40 z-10" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent z-10" />
