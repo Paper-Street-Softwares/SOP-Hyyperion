@@ -53,8 +53,8 @@ export default function Home() {
       className="min-h-screen m-auto bg-background text-foreground bg-grain overflow-x-hidden selection:bg-primary selection:text-primary-foreground font-sans"
     >
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 m-auto flex justify-between items-center px-6 py-6 md:px-12 transition-all duration-300 bg-background/80 hover:bg-background/90 backdrop-blur-sm">
-        <div className="flex justify-between max-w-[1215px] w-full m-auto">
+      <nav className="fixed top-0 left-0 right-0 z-50 m-auto flex justify-between items-center py-6 transition-all duration-300 bg-background/80 hover:bg-background/90 backdrop-blur-sm">
+        <div className="flex justify-between max-w-[1215px] w-[90%] m-auto">
           <div className="flex items-center gap-3">
             <div className="w-2 h-8 bg-primary rounded-full"></div>
             {/* <span className="font-serif text-xl tracking-tight text-white">
@@ -131,7 +131,7 @@ export default function Home() {
         </div>
       )}
       {/* Hero Section */}
-      <section className="relative min-h-[100vh] flex flex-col justify-center px-6 md:px-12 pt-24 pb-20">
+      <section className="relative min-h-[100vh] flex flex-col justify-center pt-24 lg:pt-40 pb-20 px-6 sm:px-9 lg:px-14 m-auto">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-background/40 z-10" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent z-10" />
@@ -185,7 +185,7 @@ export default function Home() {
           >
             <Button
               buttonLink={ctaWpp}
-              className="bg-primary cursor-pointer text-background lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-14 px-8 rounded-full text-lg"
+              className="bg-primary cursor-pointer text-background lg:scale-105 lg:ml-2 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-14 px-8 rounded-full text-lg"
             >
               Diagnóstico Gratuito
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -212,7 +212,7 @@ export default function Home() {
       {/* Alert Banner */}
       <section className="bg-orange-900/20 border-y border-orange-500/20 py-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-orange-500/5 animate-pulse"></div>
-        <div className="container max-w-[1215px] px-6 md:px-12 mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+        <div className="container max-w-[1215px] w-[90%] mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           <div>
             <h3 className="text-orange-200 font-serif text-xl">
               Não Fique Para Trás na Transformação Digital
@@ -233,7 +233,7 @@ export default function Home() {
       {/* Main Services Grid */}
       <section
         id="servicos"
-        className="py-24 px-6 md:px-12 bg-background relative z-10 max-w-[1215px] m-auto"
+        className="py-24 bg-background relative z-10  w-[90%] m-auto"
       >
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <span className="text-primary text-xs uppercase tracking-widest font-medium mb-3 block">
@@ -248,7 +248,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[1215px]">
           <ServiceCard
             icon={<Shield className="w-6 h-6" />}
             title="Assessoria Jurídica Completa"
@@ -288,8 +288,8 @@ export default function Home() {
         </div>
       </section>
       {/* Data Services - Structured List */}
-      <section className="py-24 px-6 md:px-12 bg-black/20 border-y border-white/5">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-24 bg-black/20 border-y border-white/5">
+        <div className="w-[90%] max-w-[1215px] m-auto">
           <div className="text-center mb-16">
             <span className="bg-white/10 text-white px-3 py-1 rounded-full text-xs uppercase tracking-widest">
               Tecnologia Avançada
@@ -361,8 +361,8 @@ export default function Home() {
         </div>
       </section>
       {/* Diferenciais Section */}
-      <section id="diferenciais" className="py-24 px-6 md:px-12 bg-background">
-        <div className="flex flex-col lg:flex-row gap-16 items-center max-w-[1215px] m-auto">
+      <section id="diferenciais" className="py-24 bg-background">
+        <div className="flex flex-col lg:flex-row gap-16 items-center w-[90%] max-w-[1215px] m-auto">
           <div className="lg:w-1/2 relative">
             <div className="aspect-[4/4] rounded-sm overflow-hidden relative">
               <img
@@ -403,8 +403,8 @@ export default function Home() {
         </div>
       </section>
       {/* Philosophy Section */}
-      <section className="py-24 px-6 md:px-12 bg-white/5 border-y border-white/5">
-        <div className="text-center mb-16 max-w-[1215px] m-auto">
+      <section className="py-24 bg-white/5 border-y border-white/5">
+        <div className="text-center mb-16 max-w-[1215px] w-[90%] m-auto">
           <span className="text-primary text-xs uppercase tracking-widest font-medium">
             Sobre Nós
           </span>
@@ -413,7 +413,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1215px] m-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1215px] w-[90%] m-auto">
           <PhilosophyCard
             title="Nossa Missão"
             desc="Capacitar empresas para crescerem de forma estruturada e sustentável, garantindo sua longevidade."
@@ -428,7 +428,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="mt-16 max-w-[1215px] m-auto p-8 bg-background border border-white/10 rounded-2xl flex flex-col md:flex-row gap-8 items-center">
+        <div className="mt-16 max-w-[1215px] w-[90%] m-auto p-8 bg-background border border-white/10 rounded-2xl flex flex-col md:flex-row gap-8 items-center">
           <div className="md:w-2/3">
             <h3 className="text-2xl font-serif text-white mb-4">
               Por que a filosofia da Sequoia?
@@ -465,7 +465,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-background/90"></div>
         </div>
 
-        <div className="relative z-10 container mx-auto max-w-[1215px]">
+        <div className="relative z-10 container mx-auto w-[90%] max-w-[1215px]">
           <div className="text-center mb-12">
             <span className="text-primary font-mono text-xs uppercase tracking-widest">
               Powered by
@@ -551,7 +551,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Button
               buttonLink={ctaWpp}
-              className="bg-primary sm:w-auto cursor-pointer lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-4 rounded-full text-lg hover:bg-white hover:text-black transition-all"
+              className="bg-primary sm:w-auto cursor-pointer lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-4 rounded-full text-md hover:bg-white hover:text-black transition-all"
             >
               Solicitar Demo TargetSmart
             </Button>
@@ -561,7 +561,7 @@ export default function Home() {
 
       {/*section nova */}
       <section className="bg-orange-950/10 py-16 px-6">
-        <div className="container max-w-[1215px] mx-auto">
+        <div className="container  w-[90%] mx-auto">
           {/* Cabeçalho */}
           <div className="text-center mb-12">
             <span className="text-primary font-mono text-xs uppercase tracking-widest">
@@ -603,7 +603,7 @@ export default function Home() {
             </div>
             <Button
               buttonLink={ctaWpp}
-              className="bg-primary cursor-pointer lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
+              className="bg-primary cursor-pointer lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-4 rounded-full text-md hover:bg-white hover:text-black transition-all"
             >
               Fale sobre parcerias
             </Button>
@@ -613,7 +613,7 @@ export default function Home() {
 
       {/* Stats Section */}
       <section className="py-20 bg-white text-background">
-        <div className="container px-6 md:px-12 mx-auto max-w-[1215px]">
+        <div className="container mx-auto max-w-[1215px] w-[90%]">
           <div className="text-center mb-12">
             <h2 className="font-serif text-3xl">Números que Impressionam</h2>
           </div>
@@ -628,7 +628,7 @@ export default function Home() {
       {/* Pricing / Stages */}
       {/* <section
         id="planos"
-        className="py-24 px-6 md:px-12 bg-background border-t border-white/5"
+        className="py-24 bg-background border-t border-white/5"
       >
         <div className="text-center mb-16">
           <span className="text-primary text-xs uppercase tracking-widest">
@@ -682,9 +682,9 @@ export default function Home() {
         </div>
       </section> */}
       {/* Footer CTA */}
-      <section className="py-32 px-6 md:px-12 bg-background relative overflow-hidden text-center border-t border-white/5">
+      <section className="py-32 bg-background relative overflow-hidden text-center border-t border-white/5">
         <div className="absolute inset-0 bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
-        <div className="relative z-10 max-w-3xl mx-auto space-y-8">
+        <div className="relative z-10 max-w-[1215px] w-[90%] mx-auto space-y-8">
           <h2 className="font-serif text-5xl md:text-7xl text-white leading-tight">
             Pronto para crescer como uma{' '}
             <span className="text-primary italic">Sequoia?</span>
@@ -697,7 +697,7 @@ export default function Home() {
             <Button
               buttonLink={ctaWpp}
               variant="outline"
-              className="bg-primary cursor-pointer lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
+              className="bg-primary w-fit m-auto cursor-pointer lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
             >
               Falar com Consultor
             </Button>
@@ -711,13 +711,15 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <footer className="py-6 md:py-12 border-t border-white/5 bg-background text-center md:text-left px-6 md:px-12">
-        <div className="flex flex-col lg:flex-row justify-between items-center text-xs text-muted-foreground gap-6">
-          <div className="flex items-start gap-2 w-full max-w-[400px] justify-center lg:justify-start">
+      <footer className="py-6 md:py-12 border-t border-white/5 bg-background text-center md:text-left max-w-[1215px] w-[90%] mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground gap-6">
+          <div className="flex items-start gap-2 w-full max-w-[300px] md:max-w-[400px] justify-center lg:justify-start">
             <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center text-primary font-serif">
               H
             </div>
-            <span>© 2024 Hyyperion Consult. Todos os direitos reservados.</span>
+            <span className="">
+              © 2024 Hyyperion Consult. Todos os direitos reservados.
+            </span>
           </div>
           <div className="flex flex-wrap gap-2 w-full justify-center sm:gap-4 lg:justify-end">
             <a href="#" className="hover:text-white">
