@@ -233,7 +233,7 @@ export default function Home() {
       {/* Main Services Grid */}
       <section
         id="servicos"
-        className="py-24 bg-background relative z-10  w-[90%] m-auto"
+        className="py-24 bg-background relative z-10 max-w-[1215px] w-[90%] m-auto"
       >
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <span className="text-primary text-xs uppercase tracking-widest font-medium mb-3 block">
