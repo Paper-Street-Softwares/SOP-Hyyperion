@@ -15,6 +15,7 @@ import {
   Zap,
   Check,
   X,
+  Phone,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useEffect, useRef, useState } from 'react'
@@ -32,11 +33,22 @@ import img5 from '../assets/logos/logo5.png'
 import img6 from '../assets/logos/logo6.png'
 import img7 from '../assets/logos/logo7.png'
 import img8 from '../assets/logos/logo8.png'
+import { Dialog } from 'primereact/dialog'
+// import 'primereact/resources/themes/lara-light-cyan/theme.css'
 
 export default function Home() {
   const [active, setActive] = useState()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState()
   const containerRef = useRef(null)
+  const [visible, setVisible] = useState<boolean>(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(true)
+    }, 5000)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   const ids = ['servicos', 'diferenciais', 'targetsmart']
   const links = ['Serviços', 'Diferenciais', 'TargetSmart']
@@ -50,7 +62,7 @@ export default function Home() {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen m-auto bg-background text-foreground bg-grain overflow-x-hidden selection:bg-primary selection:text-primary-foreground font-sans"
+      className="min-h-screen m-auto bg-background relative text-foreground bg-grain overflow-x-hidden selection:bg-primary selection:text-primary-foreground font-sans"
     >
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 m-auto flex justify-between items-center py-6 transition-all duration-300 bg-background/80 hover:bg-background/90 backdrop-blur-sm">
@@ -558,7 +570,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/*section nova */}
       <section className="bg-orange-950/10 py-16 px-6">
         <div className="container  w-[90%] mx-auto">
@@ -577,12 +588,12 @@ export default function Home() {
           </div>
 
           {/* Grid de Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-[1215px] m-auto">
             {imagesLogo.map((logo, index) => (
               <div key={index} className="flex justify-center">
                 <img
                   src={logo}
-                  className="max-w-[200px] max-h-full w-auto h-auto object-contain transition-all"
+                  className="max-w-[200px] max-h-full w-auto lg:max-w-[150px] h-auto object-contain transition-all"
                 />
               </div>
             ))}
@@ -610,7 +621,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Stats Section */}
       <section className="py-20 bg-white text-background">
         <div className="container mx-auto max-w-[1215px] w-[90%]">
@@ -733,7 +743,68 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </footer>
+      </footer>{' '}
+      <Dialog
+        className="bg-white p-6 rounded-lg text-black/40"
+        // header="Teste"
+        header={
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-green-500"></span>
+            <span className="text-sm font-semibold font-sans text-slate-900">
+              Consultor Online
+            </span>
+          </div>
+        }
+        visible={visible}
+        modal={false}
+        style={{ width: '90%', maxWidth: '382px' }}
+        onHide={() => {
+          if (!visible) return
+          setVisible(false)
+        }}
+        style={{
+          position: 'fixed',
+          bottom: '1.5rem',
+          right: '1rem',
+          width: '90%',
+          maxWidth: '382px',
+          margin: 0,
+          transform: 'none',
+        }}
+      >
+        <div className="mb-3 flex items-center justify-between"></div>
+
+        <h3 className="mb-2 text-lg font-bold text-slate-900">
+          🚨 Últimas 3 vagas para diagnóstico gratuito!
+        </h3>
+
+        <p className="mb-4 text-sm text-slate-600 font-medium">
+          Não perca a oportunidade de descobrir como sua empresa pode crescer
+          <span className=""> 50% em 2025</span>.
+        </p>
+        <div className="flex flex-col gap-3 items-center mb-4">
+          <Button
+            buttonLink={ctaWpp}
+            className="bg-primary cursor-pointer text-background lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:border hover:border-background hover:text-black transition-all h-8 w-[90%] rounded-lg text-sm"
+          >
+            <span>
+              <Phone />
+            </span>{' '}
+            Ligar Agora: (11) 96576-3714
+          </Button>
+
+          <Button
+            buttonLink={ctaWpp}
+            className="bg-white cursor-pointer text-background border border-primary lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-8 w-[90%] rounded-lg text-sm"
+          >
+            💬 WhatsApp
+          </Button>
+        </div>
+
+        <p className="text-center text-xs text-slate-500">
+          ⏰ Oferta válida por tempo limitado
+        </p>
+      </Dialog>
     </div>
   )
 }
