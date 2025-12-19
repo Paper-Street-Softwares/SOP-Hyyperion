@@ -185,7 +185,7 @@ export default function Home() {
           >
             <Button
               buttonLink={ctaWpp}
-              className="bg-primary cursor-pointer text-background ml-2 scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-14 px-8 rounded-full text-lg"
+              className="bg-primary cursor-pointer text-background lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-14 px-8 rounded-full text-lg"
             >
               Diagnóstico Gratuito
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -224,7 +224,7 @@ export default function Home() {
           <Button
             buttonLink={ctaWpp}
             variant="outline"
-            className="bg-primary cursor-pointer scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
+            className="bg-primary cursor-pointer lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
           >
             Falar com Especialista
           </Button>
@@ -492,16 +492,25 @@ export default function Home() {
                 TargetSmart processa milhões de datapoints em tempo real.
               </p>
               <ul className="space-y-4">
-                <li className="flex items-center gap-3 text-white/80">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                <li className="flex items-start gap-3 text-white/80">
+                  <span>
+                    {' '}
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  </span>
                   <span>Monitoramento em Tempo Real</span>
                 </li>
-                <li className="flex items-center gap-3 text-white/80">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                <li className="flex items-start gap-3 text-white/80">
+                  <span>
+                    {' '}
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  </span>
                   <span>Dashboards Personalizáveis</span>
                 </li>
-                <li className="flex items-center gap-3 text-white/80">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                <li className="flex items-start gap-3 text-white/80">
+                  <span>
+                    {' '}
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  </span>
                   <span>API Integrável</span>
                 </li>
               </ul>
@@ -542,7 +551,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Button
               buttonLink={ctaWpp}
-              className="bg-primary w-[90%] sm:w-auto cursor-pointer scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
+              className="bg-primary sm:w-auto cursor-pointer lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-4 rounded-full text-lg hover:bg-white hover:text-black transition-all"
             >
               Solicitar Demo TargetSmart
             </Button>
@@ -594,7 +603,7 @@ export default function Home() {
             </div>
             <Button
               buttonLink={ctaWpp}
-              className="bg-primary cursor-pointer scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
+              className="bg-primary cursor-pointer lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
             >
               Fale sobre parcerias
             </Button>
@@ -688,29 +697,29 @@ export default function Home() {
             <Button
               buttonLink={ctaWpp}
               variant="outline"
-              className="bg-primary cursor-pointer scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
+              className="bg-primary cursor-pointer lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-full text-lg hover:bg-white hover:text-black transition-all"
             >
               Falar com Consultor
             </Button>
-            <div className="relative">
+            {/* <div className="relative">
               <input
                 type="email"
                 placeholder="Seu e-mail corporativo"
                 className="h-14 px-6 rounded-full bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 w-full sm:w-80 transition-all"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
-      <footer className="py-12 border-t border-white/5 bg-background text-center md:text-left px-6 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground gap-6">
-          <div className="flex items-center gap-2">
+      <footer className="py-6 md:py-12 border-t border-white/5 bg-background text-center md:text-left px-6 md:px-12">
+        <div className="flex flex-col lg:flex-row justify-between items-center text-xs text-muted-foreground gap-6">
+          <div className="flex items-start gap-2 w-full max-w-[400px] justify-center lg:justify-start">
             <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center text-primary font-serif">
               H
             </div>
             <span>© 2024 Hyyperion Consult. Todos os direitos reservados.</span>
           </div>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-2 w-full justify-center sm:gap-4 lg:justify-end">
             <a href="#" className="hover:text-white">
               Política de Privacidade
             </a>
@@ -848,8 +857,8 @@ function PricingCard({ title, price, desc, features, isPopular }: any) {
       <Button
         className={`w-full h-12 rounded-xl ${
           isPopular
-            ? 'bg-primary scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-2xl text-lg hover:bg-white hover:text-black transition-all cursor-pointer'
-            : 'bg-white/10 scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-2xl text-lg hover:bg-primary hover:text-black transition-all cursor-pointer'
+            ? 'bg-primary lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-2xl text-lg hover:bg-white hover:text-black transition-all cursor-pointer'
+            : 'bg-white/10 lg:scale-105 hover:scale-100 hover:duration-500 text-background h-14 px-8 rounded-2xl text-lg hover:bg-primary hover:text-black transition-all cursor-pointer'
         }`}
       >
         Começar Agora
