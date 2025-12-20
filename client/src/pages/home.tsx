@@ -860,12 +860,12 @@ export default function Home() {
       </footer>{' '}
       {/* Chat modal */}
       <Dialog
-        className="bg-background border border-accent-foreground p-6 rounded-lg text-black/40"
+        className="bg-background border border-primary/85 p-6 rounded-lg text-black/40"
         // header="Teste"
         header={
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-green-500"></span>
-            <span className="text-sm font-semibold font-sans text-foreground/80">
+            <span className="text-sm font-semibold font-sans text-foreground/85">
               Consultor Online
             </span>
           </div>
@@ -896,7 +896,7 @@ export default function Home() {
           </span>
         </h3>
 
-        <p className="mb-4 text-sm text-foreground/80 font-medium">
+        <p className="mb-4 text-sm text-foreground/85 font-medium">
           Não perca a oportunidade de descobrir como sua empresa pode crescer
           <span className=""> 50% em 2025</span>.
         </p>
@@ -919,7 +919,7 @@ export default function Home() {
           </Button>
         </div>
 
-        <p className="text-center text-xs text-foreground/80 flex gap-1 items-center justify-center">
+        <p className="text-center text-xs text-foreground/85 flex gap-1 items-center justify-center">
           <Clock width={16} /> Oferta válida por tempo limitado
         </p>
       </Dialog>
