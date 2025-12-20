@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { color, motion } from 'framer-motion'
 import {
   ArrowRight,
   Menu,
@@ -17,6 +17,11 @@ import {
   X,
   Phone,
   Mail,
+  MapIcon,
+  AlertCircle,
+  MessageCircle,
+  Clock,
+  AlertTriangle,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useEffect, useRef, useState } from 'react'
@@ -208,7 +213,7 @@ export default function Home() {
               <div>
                 <div className="text-xl font-serif text-white">85%</div>
                 <div className="text-[10px] uppercase tracking-widest text-white/50">
-                  TJR Projetada
+                  TIR Projetada
                 </div>
               </div>
               <div className="w-px bg-white/10 h-8 self-center"></div>
@@ -304,7 +309,7 @@ export default function Home() {
       <section className="py-24 bg-black/20 border-y border-white/5">
         <div className="w-[90%] max-w-[1215px] m-auto">
           <div className="text-center mb-16">
-            <span className="bg-white/10 text-white px-3 py-1 rounded-full text-xs uppercase tracking-widest">
+            <span className="text-primary text-xs uppercase tracking-widest font-medium mb-3 block">
               Tecnologia Avançada
             </span>
             <h2 className="font-serif text-4xl text-white mt-6 mb-4">
@@ -732,7 +737,7 @@ export default function Home() {
                   <img src={imgLogo} alt="" />
                 </div>
 
-                <p className="text-md leading-relaxed text-slate-400 w-full text-start">
+                <p className="text-md leading-relaxed text-muted-foreground w-full text-start">
                   Assessoria empresarial multidisciplinar inspirada na
                   longevidade e crescimento sustentável das sequoias.
                 </p>
@@ -770,7 +775,7 @@ export default function Home() {
                 <h4 className="mb-4 text-lg font-bold uppercase text-white flex justify-start">
                   Serviços
                 </h4>
-                <ul className="space-y-2 text-md text-slate-400 flex flex-col text-start items-start">
+                <ul className="space-y-2 text-md text-muted-foreground flex flex-col text-start items-start">
                   <li>Assessoria Jurídica</li>
                   <li>Consultoria de Gestão Empresarial</li>
                   <li>Consultoria para Escritórios de Advocacia</li>
@@ -785,12 +790,26 @@ export default function Home() {
                 <h4 className="mb-4 text-text-lg font-semibold uppercase text-white">
                   Empresa
                 </h4>
-                <ul className="space-y-2 text-md text-slate-400">
-                  <li>Sobre Nós</li>
-                  <li>Nossa Filosofia</li>
-                  <li>Casos de Sucesso</li>
-                  <li>Blog</li>
-                </ul>
+                <div className="space-y-2 flex flex-col text-md text-muted-foreground">
+                  {links.map((item, index) => (
+                    <Link
+                      to={ids[index]}
+                      smooth={true}
+                      duration={500}
+                      offset={-90}
+                      className="cursor-pointer hover:text-primary transition-all duration-300"
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                  <a
+                    href={ctaWpp}
+                    target="_blank"
+                    className="text-sm text-primary hover:text-primary/80 transition-colors"
+                  >
+                    Fale Conosco
+                  </a>
+                </div>
               </div>
 
               {/* COLUNA 4 — CONTATO */}
@@ -798,16 +817,18 @@ export default function Home() {
                 <h4 className="mb-4 text-lg font-semibold uppercase text-white">
                   Contato
                 </h4>
-                <ul className="space-y-3 text-md text-slate-400">
+                <ul className="space-y-3 text-md text-muted-foreground">
                   <li className="flex items-center gap-2">
-                    📞 <span>(11) 9999-9999</span>
+                    <Phone width={20} className="text-white/45" />{' '}
+                    <span>(11) 96576-3714</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    ✉️{' '}
+                    <Mail width={20} className="text-white/45" />{' '}
                     <span className="lg:text-sm">contato@hyyperion.com.br</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    📍 <span>São Paulo, SP</span>
+                    <MapIcon width={20} className="text-white/45" />{' '}
+                    <span>São Paulo, SP</span>
                   </li>
                 </ul>
               </div>
@@ -815,23 +836,36 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground">
+        <div className="flex flex-col justify-between items-center text-xs text-muted-foreground">
           <div className="flex items-center gap-2 w-full  justify-center lg:justify-center">
             <span className="text-sm">
               © 2025 Hyyperion Assessoria Empresarial. Todos os direitos
               reservados.{' '}
             </span>
           </div>
+          <div className="flex items-center gap-2 w-full  justify-center lg:justify-center">
+            <span className="text-sm">
+              Desenvolvido com excelência por{' '}
+              <a
+                href="https://www.paperstreet.com.br/"
+                target="_blanck"
+                rel="noopener nreferrer"
+                className="underline cursor-pointer hover:text-primary transition-all duration-300"
+              >
+                Paper Street
+              </a>
+            </span>
+          </div>
         </div>
       </footer>{' '}
       {/* Chat modal */}
       <Dialog
-        className="bg-white p-6 rounded-lg text-black/40"
+        className="bg-background border border-accent-foreground p-6 rounded-lg text-black/40"
         // header="Teste"
         header={
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-green-500"></span>
-            <span className="text-sm font-semibold font-sans text-slate-900">
+            <span className="text-sm font-semibold font-sans text-foreground/80">
               Consultor Online
             </span>
           </div>
@@ -855,11 +889,14 @@ export default function Home() {
       >
         <div className="mb-3 flex items-center justify-between"></div>
 
-        <h3 className="mb-2 text-lg font-bold text-slate-900">
-          🚨 Últimas 3 vagas para diagnóstico gratuito!
+        <h3 className="mb-2 text-lg font-bold text-foreground leading-none">
+          <AlertTriangle className="inline-block h-[18px] w-[18px] align-baseline text-primary" />
+          <span className="ml-1">
+            Últimas 3 vagas para diagnóstico gratuito!
+          </span>
         </h3>
 
-        <p className="mb-4 text-sm text-slate-600 font-medium">
+        <p className="mb-4 text-sm text-foreground/80 font-medium">
           Não perca a oportunidade de descobrir como sua empresa pode crescer
           <span className=""> 50% em 2025</span>.
         </p>
@@ -878,12 +915,12 @@ export default function Home() {
             buttonLink={ctaWpp}
             className="bg-white cursor-pointer text-background border border-primary lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-8 w-[95%] rounded-lg text-sm"
           >
-            💬 WhatsApp
+            <MessageCircle /> WhatsApp
           </Button>
         </div>
 
-        <p className="text-center text-xs text-slate-500">
-          ⏰ Oferta válida por tempo limitado
+        <p className="text-center text-xs text-foreground/80 flex gap-1 items-center justify-center">
+          <Clock width={16} /> Oferta válida por tempo limitado
         </p>
       </Dialog>
     </div>
