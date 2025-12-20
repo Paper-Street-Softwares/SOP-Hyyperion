@@ -903,7 +903,7 @@ export default function Home() {
         <div className="flex flex-col gap-3 items-center mb-4">
           <Button
             buttonLink={ctaWpp}
-            className="bg-primary cursor-pointer text-background lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:border hover:border-background hover:text-black transition-all h-8 w-[95%] rounded-lg text-sm"
+            className="bg-primary cursor-pointer text-background lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:border hover:border-background hover:text-black transition-all h-8 w-[95%] rounded-lg text-sm border border-background"
           >
             <span>
               <Phone />
@@ -913,7 +913,7 @@ export default function Home() {
 
           <Button
             buttonLink={ctaWpp}
-            className="bg-white cursor-pointer text-background border border-primary lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-8 w-[95%] rounded-lg text-sm"
+            className="bg-background cursor-pointer text-primary border border-primary lg:scale-105 hover:scale-100 hover:duration-500 hover:bg-white hover:text-black transition-all h-8 w-[95%] rounded-lg text-sm"
           >
             <MessageCircle /> WhatsApp
           </Button>
