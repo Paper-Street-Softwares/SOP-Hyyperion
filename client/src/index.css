@@ -1,7 +1,11 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
+
+.p-dialog-header-close-icon {
+  color: white; /* ou var(--primary) */
+}
 
 @theme inline {
   --color-background: hsl(var(--background));
@@ -34,33 +38,33 @@
 
 :root {
   /* Organic Realism Theme */
-  
+
   /* Very Dark Moss Green */
-  --background: 150 20% 6%; 
-  
+  --background: 150 20% 6%;
+
   /* Off-white/Bone */
   --foreground: 40 10% 92%;
-  
+
   /* Darker Green for cards */
   --card: 150 15% 9%;
   --card-foreground: 40 10% 92%;
-  
+
   --popover: 150 15% 9%;
   --popover-foreground: 40 10% 92%;
-  
+
   /* Muted Gold/Brass - Less saturated */
   --primary: 35 40% 55%;
   --primary-foreground: 150 20% 6%;
-  
+
   --secondary: 150 10% 15%;
   --secondary-foreground: 40 10% 92%;
-  
+
   --muted: 150 10% 20%;
   --muted-foreground: 150 5% 65%;
-  
+
   --accent: 35 30% 25%;
   --accent-foreground: 40 10% 92%;
-  
+
   --destructive: 0 50% 40%;
   --destructive-foreground: 0 0% 100%;
 
@@ -77,9 +81,14 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    font-feature-settings: 'ss01', 'ss02', 'cv01', 'cv02';
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-serif font-light tracking-tight;
   }
 }
@@ -88,13 +97,13 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   /* Subtle Grain Texture */
   .bg-grain {
     position: relative;
   }
   .bg-grain::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     width: 100%;
