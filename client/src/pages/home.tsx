@@ -628,7 +628,7 @@ export default function Home() {
         </div>
       </section>
       {/* Stats Section */}
-      <section className="py-20 bg-white text-background">
+      {/* <section className="py-20 bg-white text-background">
         <div className="container mx-auto max-w-[1215px] w-[90%]">
           <div className="text-center mb-12">
             <h2 className="font-serif text-3xl">Números que Impressionam</h2>
@@ -640,7 +640,7 @@ export default function Home() {
             <StatItem value="15" label="Anos de Mercado" />
           </div>
         </div>
-      </section>
+      </section> */}
       {/* Pricing / Stages */}
       {/* <section
         id="planos"
