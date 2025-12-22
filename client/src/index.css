@@ -37,30 +37,30 @@
 }
 
 :root {
-  /* Organic Realism Theme */
+  /* Oceanic Realism Theme - More Blue */
 
-  /* Very Dark Moss Green */
-  --background: 150 20% 6%;
+  /* Very Dark Moss Green → Deep Blue */
+  --background: 220 25% 8%;
 
   /* Off-white/Bone */
   --foreground: 40 10% 92%;
 
-  /* Darker Green for cards */
-  --card: 150 15% 9%;
+  /* Darker Green for cards → Dark Blue */
+  --card: 220 20% 12%;
   --card-foreground: 40 10% 92%;
 
-  --popover: 150 15% 9%;
+  --popover: 220 20% 12%;
   --popover-foreground: 40 10% 92%;
 
   /* Muted Gold/Brass - Less saturated */
   --primary: 35 40% 55%;
-  --primary-foreground: 150 20% 6%;
+  --primary-foreground: 220 25% 8%;
 
-  --secondary: 150 10% 15%;
+  --secondary: 220 15% 18%;
   --secondary-foreground: 40 10% 92%;
 
-  --muted: 150 10% 20%;
-  --muted-foreground: 150 5% 65%;
+  --muted: 220 12% 22%;
+  --muted-foreground: 220 5% 70%;
 
   --accent: 35 30% 25%;
   --accent-foreground: 40 10% 92%;
@@ -68,8 +68,8 @@
   --destructive: 0 50% 40%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 150 10% 15%;
-  --input: 150 10% 15%;
+  --border: 220 15% 18%;
+  --input: 220 15% 18%;
   --ring: 35 40% 55%;
 
   --radius: 0.5rem;
