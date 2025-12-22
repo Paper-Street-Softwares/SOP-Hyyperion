@@ -209,7 +209,7 @@ export default function Home() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
 
-            <div className="flex gap-8 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+            {/* <div className="flex gap-8 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
               <div>
                 <div className="text-xl font-serif text-white">85%</div>
                 <div className="text-[10px] uppercase tracking-widest text-white/50">
@@ -223,7 +223,7 @@ export default function Home() {
                   Receita Ano 5
                 </div>
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </section>
