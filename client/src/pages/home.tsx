@@ -63,6 +63,9 @@ export default function Home() {
     message: 'Olá! Vim através do site e gostaria de tirar umas dúvidas.',
   })
 
+  const currentDate = new Date()
+  const currentYear = currentDate.getFullYear()
+
   const imagesLogo = [img1, img2, img3, img4, img5, img6, img7, img8]
 
   return (
@@ -839,8 +842,8 @@ export default function Home() {
         <div className="flex flex-col justify-between items-center text-xs text-muted-foreground">
           <div className="flex items-center gap-2 w-full  justify-center lg:justify-center">
             <span className="text-sm">
-              © 2025 Hyyperion Assessoria Empresarial. Todos os direitos
-              reservados.{' '}
+              © {currentYear} Hyyperion Assessoria Empresarial. Todos os
+              direitos reservados.{' '}
             </span>
           </div>
           <div className="flex items-center gap-2 w-full  justify-center lg:justify-center">
@@ -898,7 +901,7 @@ export default function Home() {
 
         <p className="mb-4 text-sm text-foreground/85 font-medium">
           Não perca a oportunidade de descobrir como sua empresa pode crescer
-          <span className=""> 50% em 2025</span>.
+          <span className=""> 50% em 2026</span>.
         </p>
         <div className="flex flex-col gap-3 items-center mb-4">
           <Button
