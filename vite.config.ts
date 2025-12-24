@@ -5,12 +5,27 @@ import path from 'path'
 import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal'
 import { metaImagesPlugin } from './vite-plugin-meta-images'
 
+function nonBlockingCssPlugin() {
+  return {
+    name: 'non-blocking-css',
+    enforce: 'post',
+    transformIndexHtml(html) {
+      return html.replace(
+        /<link rel="stylesheet"([^>]+)>/g,
+        `<link rel="stylesheet"$1 media="print" onload="this.media='all'">`
+      )
+    },
+  }
+}
+
 export default defineConfig({
   plugins: [
     react(),
     runtimeErrorOverlay(),
     tailwindcss(),
     metaImagesPlugin(),
+    nonBlockingCssPlugin(),
+
     ...(process.env.NODE_ENV !== 'production' &&
     process.env.REPL_ID !== undefined
       ? [
