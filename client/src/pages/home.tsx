@@ -84,6 +84,8 @@ export default function Home() {
             </span> */}
             <img
               src={imgLogo}
+              width={100}
+              height={27}
               className="max-w-[100px] lg:max-w-[200px]"
               alt="Logo do Site"
             />
@@ -93,9 +95,15 @@ export default function Home() {
             {links.map((item, index) => (
               <Link
                 to={ids[index]}
-                smooth={true}
+                aria-label={`Link para ${item}`}
+                smooth
                 duration={500}
                 offset={-90}
+                spy
+                hashSpy
+                tag="a"
+                href={`#${ids[index]}`}
+                activeClass="text-primary"
                 className="cursor-pointer cursor-pointer bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat bg-left-bottom transition-[background-size] duration-300 hover:bg-[length:100%_2px]"
               >
                 {item}
@@ -143,16 +151,18 @@ export default function Home() {
               {links.map((item, index) => (
                 <Link
                   to={ids[index]}
-                  smooth={true}
+                  aria-label={`Link para ${item}`}
+                  smooth
                   duration={500}
                   offset={-90}
-                  onClick={() => setActive(index)}
-                  className={`cursor-pointer transition-all w-full ${
-                    active === index ? 'text-primary' : 'text-textPadrao'
-                  }`}
+                  spy
+                  hashSpy
+                  tag="a"
+                  href={`#${ids[index]}`}
+                  activeClass="text-primary"
+                  className="cursor-pointer transition-all w-full text-textPadrao"
                 >
                   {item}
-                  {/* <hr className=" w-full" /> */}
                 </Link>
               ))}
             </div>
@@ -610,6 +620,8 @@ export default function Home() {
             {imagesLogo.map((logo, index) => (
               <div key={index} className="flex justify-center">
                 <img
+                  width={150}
+                  height={104}
                   src={logo}
                   alt={imagesAlt}
                   className="max-w-[200px] max-h-full w-auto lg:max-w-[150px] h-auto object-contain transition-all"
@@ -747,7 +759,12 @@ export default function Home() {
               {/* COLUNA 1 — LOGO / DESCRIÇÃO */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <img src={imgLogo} alt="Logo do Site" />
+                  <img
+                    src={imgLogo}
+                    alt="Logo do Site"
+                    width={100}
+                    height={27}
+                  />
                 </div>
 
                 <p className="text-md leading-relaxed text-muted-foreground w-full text-start">
@@ -807,9 +824,15 @@ export default function Home() {
                   {links.map((item, index) => (
                     <Link
                       to={ids[index]}
-                      smooth={true}
+                      aria-label={`Link para ${item}`}
+                      smooth
                       duration={500}
                       offset={-90}
+                      spy
+                      hashSpy
+                      tag="a"
+                      href={`#${ids[index]}`}
+                      activeClass="text-primary"
                       className="cursor-pointer hover:text-primary transition-all duration-300"
                     >
                       {item}
