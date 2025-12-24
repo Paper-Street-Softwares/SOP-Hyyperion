@@ -25,9 +25,9 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useEffect, useRef, useState } from 'react'
-import forestBg from '@assets/generated_images/realistic_misty_forest_with_natural_light.png'
-import sequoiaUp from '@assets/generated_images/low_angle_view_of_giant_sequoias_looking_up.png'
-import dataBg from '@assets/generated_images/abstract_digital_data_stream_in_dark_gold_and_green.png'
+import forestBg from '@assets/generated_images/realistic_misty_forest_with_natural_light.webp'
+import sequoiaUp from '@assets/generated_images/low_angle_view_of_giant_sequoias_looking_up.webp'
+import dataBg from '@assets/generated_images/abstract_digital_data_stream_in_dark_gold_and_green.webp'
 import { Link } from 'react-scroll'
 import { getWhatsappLink } from '@/utils/whatsapp'
 import imgLogo from '../assets/hero/logo.webp'
@@ -67,6 +67,7 @@ export default function Home() {
   const currentYear = currentDate.getFullYear()
 
   const imagesLogo = [img1, img2, img3, img4, img5, img6, img7, img8]
+  const imagesAlt = 'Imagem de Logomarca Parceira'
 
   return (
     <div
@@ -84,7 +85,7 @@ export default function Home() {
             <img
               src={imgLogo}
               className="max-w-[100px] lg:max-w-[200px]"
-              alt=""
+              alt="Logo do Site"
             />
           </div>
 
@@ -115,9 +116,17 @@ export default function Home() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
-              <X className="text-primary" />
+              <X
+                aria-label="Botão de fechar Sidebar"
+                className="text-primary"
+              />
             ) : (
-              <Menu width={30} height={30} className="text-primary" />
+              <Menu
+                aria-label="Botão de abrir Sidebar"
+                width={30}
+                height={30}
+                className="text-primary"
+              />
             )}
           </button>
         </div>
@@ -235,9 +244,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-orange-500/5 animate-pulse"></div>
         <div className="container max-w-[1215px] w-[90%] mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           <div>
-            <h3 className="text-orange-200 font-serif text-xl">
+            <h1 className="text-orange-200 font-serif text-xl">
               Não Fique Para Trás na Transformação Digital
-            </h3>
+            </h1>
             <p className="text-orange-200/60 text-sm mt-1">
               Sua empresa pode estar perdendo competitividade agora mesmo.
             </p>
@@ -260,9 +269,9 @@ export default function Home() {
           <span className="text-primary text-xs uppercase tracking-widest font-medium mb-3 block">
             Soluções Integradas
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">
+          <h1 className="font-serif text-4xl md:text-5xl text-white mb-6">
             Serviços que Fazem a Diferença
-          </h2>
+          </h1>
           <p className="text-muted-foreground text-lg font-light">
             Uma abordagem multidisciplinar única que combina expertise jurídica
             consolidada com visão estratégica moderna.
@@ -315,9 +324,9 @@ export default function Home() {
             <span className="text-primary text-xs uppercase tracking-widest font-medium mb-3 block">
               Tecnologia Avançada
             </span>
-            <h2 className="font-serif text-4xl text-white mt-6 mb-4">
+            <h1 className="font-serif text-4xl text-white mt-6 mb-4">
               Serviços Especializados em Dados
-            </h2>
+            </h1>
             <p className="text-muted-foreground">
               Soluções tecnológicas para análise de dados, prevenção à fraude e
               gestão de risco.
@@ -395,9 +404,9 @@ export default function Home() {
             </div>
           </div>
           <div className="lg:w-1/2 space-y-8">
-            <h2 className="font-serif text-4xl md:text-5xl text-white">
+            <h1 className="font-serif text-4xl md:text-5xl text-white">
               Diferenciais Únicos no Mercado
-            </h2>
+            </h1>
             <div className="space-y-6">
               <DifferentialItem
                 number="01"
@@ -429,9 +438,9 @@ export default function Home() {
           <span className="text-primary text-xs uppercase tracking-widest font-medium">
             Sobre Nós
           </span>
-          <h2 className="font-serif text-4xl text-white mt-4">
+          <h1 className="font-serif text-4xl text-white mt-4">
             Conheça a Hyyperion
-          </h2>
+          </h1>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1215px] w-[90%] m-auto">
@@ -451,9 +460,9 @@ export default function Home() {
 
         <div className="mt-16 max-w-[1215px] w-[90%] m-auto p-8 bg-background border border-white/10 rounded-2xl flex flex-col md:flex-row gap-8 items-center">
           <div className="md:w-2/3">
-            <h3 className="text-2xl font-serif text-white mb-4">
+            <h1 className="text-2xl font-serif text-white mb-4">
               Por que a filosofia da Sequoia?
-            </h3>
+            </h1>
             <p className="text-muted-foreground font-light leading-relaxed">
               A Sequoia é um organismo que cresce devagar, mas de forma
               constante e inabalável. Suas raízes são profundas e
@@ -491,10 +500,10 @@ export default function Home() {
             <span className="text-primary font-mono text-xs uppercase tracking-widest">
               Tecnologia de Ponta
             </span>
-            <h2 className="text-5xl md:text-6xl font-serif text-white mt-2 tracking-tight">
+            <h1 className="text-5xl md:text-6xl font-serif text-white mt-2 tracking-tight">
               TARGET <br className="md:hidden" />
               <span className="text-primary italic">SMART</span>
-            </h2>
+            </h1>
             <p className="text-white/60 max-w-2xl mx-auto mt-6 text-lg">
               A plataforma de inteligência de dados exclusiva da Hyyperion.
               Transforme informações brutas em decisões estratégicas de alto
@@ -504,9 +513,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 bg-black/40 border border-white/10 p-8 md:p-12 rounded-3xl backdrop-blur-md">
             <div className="space-y-8">
-              <h3 className="text-2xl text-white font-medium">
+              <h1 className="text-2xl text-white font-medium">
                 Uma Aliada Estratégica
-              </h3>
+              </h1>
               <p className="text-muted-foreground leading-relaxed">
                 Imagine ter o poder de prever riscos antes que eles aconteçam e
                 identificar oportunidades que seus concorrentes não veem. A
@@ -537,30 +546,30 @@ export default function Home() {
               </ul>
             </div>
             <div className="space-y-8 border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 md:pl-12">
-              <h3 className="text-2xl text-white font-medium">
+              <h1 className="text-2xl text-white font-medium">
                 Benefícios Reais
-              </h3>
+              </h1>
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-white font-medium mb-1">
+                  <h1 className="text-white font-medium mb-1">
                     Redução de Inadimplência
-                  </h4>
+                  </h1>
                   <p className="text-sm text-muted-foreground">
                     Identifique clientes de risco antes da venda.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-white font-medium mb-1">
+                  <h1 className="text-white font-medium mb-1">
                     Aumento de Conversão
-                  </h4>
+                  </h1>
                   <p className="text-sm text-muted-foreground">
                     Foque seus esforços nos leads com maior potencial.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-white font-medium mb-1">
+                  <h1 className="text-white font-medium mb-1">
                     Compliance Automático
-                  </h4>
+                  </h1>
                   <p className="text-sm text-muted-foreground">
                     Esteja sempre em dia com regulações e LGPD.
                   </p>
@@ -587,9 +596,9 @@ export default function Home() {
             <span className="text-primary font-mono text-xs uppercase tracking-widest">
               Parcerias Estratégicas
             </span>
-            <h2 className="text-white font-serif text-3xl md:text-4xl mt-4">
+            <h1 className="text-white font-serif text-3xl md:text-4xl mt-4">
               Parceiros Oficiais da Hyyperion
-            </h2>
+            </h1>
             <p className="text-orange-200/60 text-sm md:text-base mt-4 max-w-2xl mx-auto">
               Trabalhamos com os melhores parceiros do mercado para oferecer
               soluções completas e integradas aos nossos clientes.
@@ -602,6 +611,7 @@ export default function Home() {
               <div key={index} className="flex justify-center">
                 <img
                   src={logo}
+                  alt={imagesAlt}
                   className="max-w-[200px] max-h-full w-auto lg:max-w-[150px] h-auto object-contain transition-all"
                 />
               </div>
@@ -612,9 +622,9 @@ export default function Home() {
           <div className="mt-16 text-center md:text-start max-w-[1215px] justify-evenly m-auto p-8 bg-background border border-white/10 rounded-2xl flex flex-col md:flex-row gap-8 items-center">
             <div>
               {' '}
-              <h3 className="text-primary font-bold text-2xl mb-2">
+              <h1 className="text-primary font-bold text-2xl mb-2">
                 Quer se tornar um parceiro da Hyyperion?
-              </h3>
+              </h1>
               <p className="text-white text-sm mb-6 max-w-xl mx-auto">
                 Estamos sempre em busca de parcerias estratégicas que agreguem
                 valor aos nossos clientes. Entre em contato e descubra como
@@ -634,7 +644,7 @@ export default function Home() {
       {/* <section className="py-20 bg-white text-background">
         <div className="container mx-auto max-w-[1215px] w-[90%]">
           <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl">Números que Impressionam</h2>
+            <h1 className="font-serif text-3xl">Números que Impressionam</h1>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <StatItem value="98%" label="Satisfação" />
@@ -653,9 +663,9 @@ export default function Home() {
           <span className="text-primary text-xs uppercase tracking-widest">
             Investimento
           </span>
-          <h2 className="font-serif text-4xl text-white mt-4">
+          <h1 className="font-serif text-4xl text-white mt-4">
             Soluções para Cada Estágio
-          </h2>
+          </h1>
           <p className="text-muted-foreground mt-4">
             Escolha o plano ideal para o momento do seu negócio.
           </p>
@@ -704,10 +714,10 @@ export default function Home() {
       <section className="py-32 bg-background relative overflow-hidden text-center border-t border-white/5">
         <div className="absolute inset-0 bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
         <div className="relative z-10 max-w-[1215px] w-[90%] mx-auto space-y-8">
-          <h2 className="font-serif text-5xl md:text-7xl text-white leading-tight">
+          <h1 className="font-serif text-5xl md:text-7xl text-white leading-tight">
             Pronto para crescer como uma{' '}
             <span className="text-primary italic">Sequoia?</span>
-          </h2>
+          </h1>
           <p className="text-xl text-muted-foreground font-light">
             Agende uma conversa com nossos sócios e descubra onde sua empresa
             pode chegar.
@@ -737,7 +747,7 @@ export default function Home() {
               {/* COLUNA 1 — LOGO / DESCRIÇÃO */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <img src={imgLogo} alt="" />
+                  <img src={imgLogo} alt="Logo do Site" />
                 </div>
 
                 <p className="text-md leading-relaxed text-muted-foreground w-full text-start">
@@ -775,9 +785,9 @@ export default function Home() {
 
               {/* COLUNA 2 — SERVIÇOS */}
               <div>
-                <h4 className="mb-4 text-lg font-bold uppercase text-white flex justify-start">
+                <h1 className="mb-4 text-lg font-bold uppercase text-white flex justify-start">
                   Serviços
-                </h4>
+                </h1>
                 <ul className="space-y-2 text-md text-muted-foreground flex flex-col text-start items-start">
                   <li>Assessoria Jurídica</li>
                   <li>Consultoria de Gestão Empresarial</li>
@@ -790,9 +800,9 @@ export default function Home() {
 
               {/* COLUNA 3 — EMPRESA */}
               <div className="flex flex-col items-start text-start">
-                <h4 className="mb-4 text-text-lg font-semibold uppercase text-white">
+                <h1 className="mb-4 text-text-lg font-semibold uppercase text-white">
                   Empresa
-                </h4>
+                </h1>
                 <div className="space-y-2 flex flex-col text-md text-muted-foreground">
                   {links.map((item, index) => (
                     <Link
@@ -817,9 +827,9 @@ export default function Home() {
 
               {/* COLUNA 4 — CONTATO */}
               <div className="flex flex-col items-start text-start">
-                <h4 className="mb-4 text-lg font-semibold uppercase text-white">
+                <h1 className="mb-4 text-lg font-semibold uppercase text-white">
                   Contato
-                </h4>
+                </h1>
                 <ul className="space-y-3 text-md text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <Phone width={20} className="text-white/45" />{' '}
@@ -892,12 +902,12 @@ export default function Home() {
       >
         <div className="mb-3 flex items-center justify-between"></div>
 
-        <h3 className="mb-2 text-lg font-bold text-foreground leading-none">
+        <h1 className="mb-2 text-lg font-bold text-foreground leading-none">
           <AlertTriangle className="inline-block h-[18px] w-[18px] align-baseline text-primary" />
           <span className="ml-1">
             Últimas 3 vagas para diagnóstico gratuito!
           </span>
-        </h3>
+        </h1>
 
         <p className="mb-4 text-sm text-foreground/85 font-medium">
           Não perca a oportunidade de descobrir como sua empresa pode crescer
@@ -937,7 +947,7 @@ function ServiceCard({ icon, title, desc, tags }: any) {
       <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white mb-6 group-hover:bg-primary group-hover:text-background transition-colors">
         {icon}
       </div>
-      <h3 className="text-xl font-serif text-white mb-3">{title}</h3>
+      <h1 className="text-xl font-serif text-white mb-3">{title}</h1>
       <p className="text-muted-foreground text-sm leading-relaxed mb-6">
         {desc}
       </p>
@@ -963,7 +973,7 @@ function DataCategory({ title, icon, children }: any) {
       </div>
       <div className="flex items-center gap-3 mb-6">
         <span className="text-primary">{icon}</span>
-        <h3 className="text-xl text-white font-medium">{title}</h3>
+        <h1 className="text-xl text-white font-medium">{title}</h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">{children}</div>
     </div>
@@ -973,7 +983,7 @@ function DataCategory({ title, icon, children }: any) {
 function DataItem({ title, desc }: any) {
   return (
     <div className="bg-white/5 p-4 rounded-lg border border-white/5 hover:border-white/20 transition-colors cursor-pointer">
-      <h4 className="text-white font-medium text-sm mb-1">{title}</h4>
+      <h1 className="text-white font-medium text-sm mb-1">{title}</h1>
       <p className="text-xs text-muted-foreground">{desc}</p>
     </div>
   )
@@ -986,7 +996,7 @@ function DifferentialItem({ number, title, desc }: any) {
         {number}
       </div>
       <div>
-        <h3 className="text-xl text-white font-medium mb-2">{title}</h3>
+        <h1 className="text-xl text-white font-medium mb-2">{title}</h1>
         <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
       </div>
     </div>
@@ -999,7 +1009,7 @@ function PhilosophyCard({ title, desc }: any) {
       <div className="w-12 h-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
         <Globe className="w-5 h-5" />
       </div>
-      <h3 className="text-lg font-serif text-white mb-4">{title}</h3>
+      <h1 className="text-lg font-serif text-white mb-4">{title}</h1>
       <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
     </div>
   )
@@ -1033,7 +1043,7 @@ function PricingCard({ title, price, desc, features, isPopular }: any) {
         </div>
       )}
       <div className="mb-8">
-        <h3 className="text-xl font-serif text-white">{title}</h3>
+        <h1 className="text-xl font-serif text-white">{title}</h1>
         <p className="text-sm text-muted-foreground mt-2 h-10">{desc}</p>
       </div>
       <div className="mb-8">

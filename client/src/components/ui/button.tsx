@@ -52,6 +52,7 @@ const Button = React.forwardRef<
       ref={ref}
       href={buttonLink}
       target="_blank"
+      aria-label="Link de direcionamento"
       className={cn(buttonVariants({ variant, size }), className)}
       {...props}
     />
