@@ -30,7 +30,7 @@ import sequoiaUp from '@assets/generated_images/low_angle_view_of_giant_sequoias
 import dataBg from '@assets/generated_images/abstract_digital_data_stream_in_dark_gold_and_green.webp'
 import { Link } from 'react-scroll'
 import { getWhatsappLink } from '@/utils/whatsapp'
-import imgLogo from '../assets/hero/logo.webp'
+import imgLogo from '../assets/hero/logo2.webp'
 import img1 from '../assets/logos/logo1.png'
 import img2 from '../assets/logos/logo2.png'
 import img3 from '../assets/logos/logo3.png'
@@ -54,6 +54,11 @@ export default function Home() {
     }, 5000)
 
     return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    const id = requestIdleCallback(() => setVisible(true))
+    return () => cancelIdleCallback(id)
   }, [])
 
   const ids = ['servicos', 'diferenciais', 'sobre']
@@ -145,7 +150,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="fixed inset-0 pt-24 px-6 z-40 w-full"
+            className="motion-safe fixed inset-0 pt-24 px-6 z-40 w-full"
           >
             <div className="flex flex-col gap-6 bg-black/90 max-w-[500px] text-center items-center p-4 text-lg mx-auto font-secondFont font-medium border-l border-r border-b border-primary/20 rounded-md">
               {links.map((item, index) => (
@@ -176,11 +181,16 @@ export default function Home() {
           <div className="absolute inset-0 bg-background/40 z-10" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
-          <img
-            src={forestBg}
-            alt="Forest"
-            className="w-full h-full object-cover"
-          />
+          <div className="absolute inset-0">
+            <img
+              src={forestBg}
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover"
+              decoding="async"
+              loading="eager"
+            />
+          </div>
         </div>
 
         <div className="relative z-20 m-auto w-full max-w-[1215px]">
@@ -197,10 +207,11 @@ export default function Home() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            style={{ willChange: 'transform' }}
+            initial={{ transform: 'translate3d(0, 30px, 0)' }}
+            animate={{ transform: 'translate3d(0, 0, 0)' }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.95] text-white mb-8"
+            className="motion-safe font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.95] text-white mb-8"
           >
             Cresça como <br />
             uma <span className="italic text-primary/90">Sequoia.</span>
@@ -210,7 +221,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-lg md:text-2xl text-white/80 font-light leading-relaxed max-w-xl mb-12 border-l border-white/20 pl-6"
+            className="motion-safe text-lg md:text-2xl min-h-[120px] text-white/80 font-light leading-relaxed max-w-xl mb-12 border-l border-white/20 pl-6"
           >
             Assessoria empresarial que combina expertise jurídica, gestão
             estratégica e desenvolvimento humano para construir empresas que
@@ -218,10 +229,15 @@ export default function Home() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={false}
+            animate={isMobileMenuOpen ? 'open' : 'closed'}
+            variants={{
+              open: { opacity: 1, transform: 'translate3d(0,0,0)' },
+              closed: { opacity: 0, transform: 'translate3d(0,-20px,0)' },
+            }}
+            style={{ position: 'fixed', willChange: 'transform' }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-6 items-start sm:items-center"
+            className="motion-safe flex flex-col sm:flex-row gap-6 items-start sm:items-center"
           >
             <Button
               buttonLink={ctaWpp}
