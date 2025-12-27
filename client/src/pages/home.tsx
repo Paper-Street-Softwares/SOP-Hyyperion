@@ -195,7 +195,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-20 m-auto w-full max-w-[1215px]">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
@@ -205,7 +205,15 @@ export default function Home() {
             <span className="text-primary text-sm uppercase tracking-widest font-medium">
               Consultoria Multidisciplinar
             </span>
-          </motion.div>
+          </motion.div> */}
+
+          <div className="flex items-center gap-3 mb-6">
+            {' '}
+            <span className="h-px w-8 bg-primary"></span>
+            <span className="text-primary text-sm uppercase tracking-widest font-medium">
+              Consultoria Multidisciplinar
+            </span>
+          </div>
 
           <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.95] text-white mb-8">
             Cresça como <br />
