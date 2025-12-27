@@ -189,6 +189,7 @@ export default function Home() {
               className="w-full h-full object-cover"
               decoding="async"
               loading="eager"
+              alt="Imagem ilustrativa"
             />
           </div>
         </div>
