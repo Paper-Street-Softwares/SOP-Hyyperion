@@ -206,16 +206,10 @@ export default function Home() {
             </span>
           </motion.div>
 
-          <motion.h1
-            style={{ willChange: 'transform' }}
-            initial={{ transform: 'translate3d(0, 30px, 0)' }}
-            animate={{ transform: 'translate3d(0, 0, 0)' }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="motion-safe font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.95] text-white mb-8"
-          >
+          <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.95] text-white mb-8">
             Cresça como <br />
             uma <span className="italic text-primary/90">Sequoia.</span>
-          </motion.h1>
+          </h1>
 
           <motion.p
             initial={{ opacity: 0 }}
