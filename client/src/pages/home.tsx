@@ -30,7 +30,7 @@ import sequoiaUp from '@assets/generated_images/low_angle_view_of_giant_sequoias
 import dataBg from '@assets/generated_images/abstract_digital_data_stream_in_dark_gold_and_green.webp'
 import { Link } from 'react-scroll'
 import { getWhatsappLink } from '@/utils/whatsapp'
-import imgLogo from '../assets/hero/logo2.webp'
+import imgLogo from '../assets/hero/logo3.webp'
 import img1 from '../assets/logos/logo1.png'
 import img2 from '../assets/logos/logo2.png'
 import img3 from '../assets/logos/logo3.png'
