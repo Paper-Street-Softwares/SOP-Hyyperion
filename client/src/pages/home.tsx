@@ -232,15 +232,10 @@ export default function Home() {
           </motion.p>
 
           <motion.div
-            initial={false}
-            animate={isMobileMenuOpen ? 'open' : 'closed'}
-            variants={{
-              open: { opacity: 1, transform: 'translate3d(0,0,0)' },
-              closed: { opacity: 0, transform: 'translate3d(0,-20px,0)' },
-            }}
-            style={{ position: 'fixed', willChange: 'transform' }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="motion-safe flex flex-col sm:flex-row gap-6 items-start sm:items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-6 items-start sm:items-center"
           >
             <Button
               buttonLink={ctaWpp}
@@ -249,22 +244,6 @@ export default function Home() {
               Diagnóstico Gratuito
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-
-            {/* <div className="flex gap-8 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-              <div>
-                <div className="text-xl font-serif text-white">85%</div>
-                <div className="text-[10px] uppercase tracking-widest text-white/50">
-                  TIR Projetada
-                </div>
-              </div>
-              <div className="w-px bg-white/10 h-8 self-center"></div>
-              <div>
-                <div className="text-xl font-serif text-primary">R$ 8.8M</div>
-                <div className="text-[10px] uppercase tracking-widest text-white/50">
-                  Receita Ano 5
-                </div>
-              </div>
-            </div> */}
           </motion.div>
         </div>
       </section>
