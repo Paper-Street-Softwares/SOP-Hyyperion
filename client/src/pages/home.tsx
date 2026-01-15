@@ -57,7 +57,7 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    const id = requestIdleCallback(() => setVisible(true))
+    const id = requestIdleCallback(() => setVisible(false))
     return () => cancelIdleCallback(id)
   }, [])
 
