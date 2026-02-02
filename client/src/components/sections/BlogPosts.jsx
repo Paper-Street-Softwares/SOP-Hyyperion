@@ -30,7 +30,7 @@ function BlogPosts() {
 
   return (
     <div>
-      <section className="bg-bgSectionDark py-24" id="blog">
+      <section className="bg-bgSectionDark" id="blog">
         <div>
           <span className="text-primary font-mono text-xs uppercase tracking-widest">
             blog
