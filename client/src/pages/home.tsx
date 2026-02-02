@@ -40,6 +40,7 @@ import img6 from '../assets/logos/logo6.png'
 import img7 from '../assets/logos/logo7.png'
 import img8 from '../assets/logos/logo8.png'
 import { Dialog } from 'primereact/dialog'
+import BlogPosts from '../components/sections/BlogPosts'
 // import 'primereact/resources/themes/lara-light-cyan/theme.css'
 
 export default function Home() {
@@ -492,7 +493,7 @@ export default function Home() {
       {/* TargetSmart Section */}
       <section
         id="targetsmart"
-        className="relative py-32 px-6 md:px-12 overflow-hidden "
+        className="relative py-32 px-6 md:px-12 overflow-hidden"
       >
         <div className="absolute inset-0">
           <img
@@ -650,76 +651,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* Stats Section */}
-      {/* <section className="py-20 bg-white text-background">
-        <div className="container mx-auto max-w-[1215px] w-[90%]">
-          <div className="text-center mb-12">
-            <h1 className="font-serif text-3xl">Números que Impressionam</h1>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <StatItem value="98%" label="Satisfação" />
-            <StatItem value="200+" label="Empresas" />
-            <StatItem value="37%" label="Crescimento Médio" />
-            <StatItem value="15" label="Anos de Mercado" />
-          </div>
-        </div>
-      </section> */}
-      {/* Pricing / Stages */}
-      {/* <section
-        id="planos"
-        className="py-24 bg-background border-t border-white/5"
-      >
-        <div className="text-center mb-16">
-          <span className="text-primary text-xs uppercase tracking-widest">
-            Investimento
-          </span>
-          <h1 className="font-serif text-4xl text-white mt-4">
-            Soluções para Cada Estágio
-          </h1>
-          <p className="text-muted-foreground mt-4">
-            Escolha o plano ideal para o momento do seu negócio.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <PricingCard
-            title="Start"
-            price="R$ 2.500"
-            desc="Para empresas iniciando a estruturação."
-            features={[
-              'Diagnóstico Inicial',
-              'Gestão Financeira Básica',
-              'Contratos Essenciais',
-              'Suporte por E-mail',
-            ]}
-          />
-          <PricingCard
-            title="Crescimento"
-            price="R$ 5.000"
-            desc="Para empresas em expansão acelerada."
-            isPopular
-            features={[
-              'Tudo do Start',
-              'Planejamento Estratégico',
-              'Gestão de Processos',
-              'TargetSmart Basic',
-              'Reuniões Mensais',
-            ]}
-          />
-          <PricingCard
-            title="Liderança"
-            price="R$ 10.000"
-            desc="Para empresas que buscam dominar o mercado."
-            features={[
-              'Tudo do Crescimento',
-              'Consultoria Full-Service',
-              'TargetSmart Pro',
-              'Comitê Executivo',
-              'Mentoria Exclusiva',
-            ]}
-          />
-        </div>
-      </section> */}
+      {/* BlogPosts */}
+      <section className="py-32 bg-background relative overflow-hidden text-center border-t border-white/5">
+        <BlogPosts />
+      </section>
       {/* Footer CTA */}
       <section className="py-32 bg-background relative overflow-hidden text-center border-t border-white/5">
         <div className="absolute inset-0 bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
@@ -906,7 +841,7 @@ export default function Home() {
         }
         visible={visible}
         modal={false}
-        style={{ width: '90%', maxWidth: '382px' }}
+        // style={{ width: '90%', maxWidth: '382px' }}
         onHide={() => {
           if (!visible) return
           setVisible(false)
