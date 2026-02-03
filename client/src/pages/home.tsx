@@ -62,8 +62,8 @@ export default function Home() {
     return () => cancelIdleCallback(id)
   }, [])
 
-  const ids = ['servicos', 'diferenciais', 'sobre']
-  const links = ['Serviços', 'Diferenciais', 'Sobre']
+  const ids = ['servicos', 'diferenciais', 'sobre', 'blog']
+  const links = ['Serviços', 'Diferenciais', 'Sobre', 'Blog']
   const ctaWpp = getWhatsappLink({
     phone: '11965763714',
     message: 'Olá! Vim através do site e gostaria de tirar umas dúvidas.',
@@ -652,7 +652,10 @@ export default function Home() {
         </div>
       </section>
       {/* BlogPosts */}
-      <section className="py-32 bg-background relative overflow-hidden text-center border-t border-white/5">
+      <section
+        id="blog"
+        className="py-32 bg-background relative overflow-hidden text-center border-t border-white/5"
+      >
         <BlogPosts />
       </section>
       {/* Footer CTA */}
