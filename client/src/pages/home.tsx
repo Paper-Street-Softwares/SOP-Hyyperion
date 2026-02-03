@@ -221,7 +221,7 @@ export default function Home() {
             uma <span className="italic text-primary/90">Sequoia.</span>
           </h1>
 
-          <motion.p
+          <div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
@@ -230,9 +230,9 @@ export default function Home() {
             Assessoria empresarial que combina expertise jurídica, gestão
             estratégica e desenvolvimento humano para construir empresas que
             prosperam por gerações.
-          </motion.p>
+          </div>
 
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -245,7 +245,7 @@ export default function Home() {
               Diagnóstico Gratuito
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-          </motion.div>
+          </div>
         </div>
       </section>
       {/* Alert Banner */}
